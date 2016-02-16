@@ -16,7 +16,7 @@
 <meta property="og:description" content="前言：本文是一篇简单的独立博客搭建教程，内容不够完善，在我使用博客的过程中会不断实践并进行补充。
 1.安装node.js下载node.js（node.js中文站偶尔抽风打不开，可以访问node.js英文官网）安装过程很简单。
 2.安装hexo找个地方新建个文件夹，命名随意，我们先假设将其命名为hexo。在新建的hexo文件夹内最上面的路径显示框中输入CMD,然后回车打开命令行程序并且路径是当前文件">
-<meta property="og:updated_time" content="2016-02-16T07:18:10.790Z">
+<meta property="og:updated_time" content="2016-02-16T07:39:25.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo与github搭建静态博客">
 <meta name="twitter:description" content="前言：本文是一篇简单的独立博客搭建教程，内容不够完善，在我使用博客的过程中会不断实践并进行补充。
@@ -63,6 +63,11 @@
 							<div class="ribbon"></div>
 						</div>
 						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
 						
 						<div class="icon-wrap icon-me hide" data-idx="3">
 							<div class="user"></div>
@@ -77,6 +82,8 @@
 					<ul class="tips-inner">
 						<li>菜单</li>
 						<li>标签</li>
+						
+						<li>友情链接</li>
 						
 						
 						<li>关于我</li>
@@ -96,8 +103,6 @@
 				        
 							<li><a href="/archives">所有文章</a></li>
 				        
-							<li><a href="/sitemap.xml">sitemap</a></li>
-				        
 						</ul>
 					</nav>
 					<nav class="header-nav">
@@ -116,10 +121,18 @@
 				
 				
 				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://linetoanywhere.github.io/">豪哥的博客</a>
+			        
+			        </div>
+				</section>
+				
 
 				
 				
-				<section class="switch-part switch-part3">
+				<section class="switch-part switch-part4">
 				
 					<div id="js-aboutme">Android程序猿，单身狗。</div>
 				</section>
@@ -156,8 +169,6 @@
 		        
 					<li><a href="/archives">所有文章</a></li>
 		        
-					<li><a href="/sitemap.xml">sitemap</a></li>
-		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
@@ -174,7 +185,7 @@
   
     <div class="article-meta">
       <a href="/2016/02/16/使用hexo与github搭建静态博客/" class="article-date">
-  	<time datetime="2016-02-16T07:18:10.790Z" itemprop="datePublished">2016-02-16</time>
+  	<time datetime="2016-02-16T07:39:25.679Z" itemprop="datePublished">2016-02-16</time>
 </a>
     </div>
   
@@ -227,6 +238,7 @@
 </code></pre><p>然后打开站点配置文件_config.yml，找到theme 字段，并将其值更改为 yilia。然后执行</p>
 <pre><code>hexo server
 </code></pre><p>并在浏览器中打开<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>进行预览，看是否更换主题成功。</p>
+<p>修改部分网站信息比如标题、描述、语言设置也是在_config.yml文件中。</p>
 <h2 id="5-404网页"><a href="#5-404网页" class="headerlink" title="5.404网页"></a>5.404网页</h2><p>404页面网上有很多模板，推荐使用<a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯的寻子公益404页面</a>。</p>
 <p>在/source目录下新建txt文件，将下面代码复制粘贴到其中</p>
 <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.qq.com/404/search_children.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
@@ -248,7 +260,7 @@
 <p>或者</p>
 <pre><code>hexo s -g
 </code></pre><p>进行预览加生成静态文件</p>
-<p>然后将生成的public文件夹内所有文件复制粘贴到库文件夹内，再用github客户端同步到github。</p>
+<p>然后将生成的public文件夹内所有文件复制粘贴到库文件夹内覆盖，再用github客户端同步到github。</p>
 <p>当然你也可以直接在本地的库文件夹中执行hexo的安装和其他配置，然后将public文件夹内所有文件粘贴到库文件夹根目录下，在github客户端中的Repository settings中添加忽略的文件，只上传需要的文件。</p>
 
       
