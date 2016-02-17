@@ -2,7 +2,7 @@ title: TED演讲笔记
 tags: 读书&公开课 笔记
 ---
 
-
+本文为观看TED演讲的笔记和集合<!--more-->
 
 **
 [《用“云”建立一所学校》](http://v.163.com/movie/2013/3/J/7/M8NUR06VN_M8NURC3J7.html)**
