@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/02/15/使用hexo与github搭建静态博客/index.html">
 <meta property="og:site_name" content="no name">
 <meta property="og:description" content="前言：本文是一篇简单的独立博客搭建教程，内容不够完善，在我使用博客的过程中会不断实践并进行补充。">
-<meta property="og:updated_time" content="2016-02-17T09:52:09.454Z">
+<meta property="og:updated_time" content="2016-02-29T10:40:55.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo与github搭建静态博客">
 <meta name="twitter:description" content="前言：本文是一篇简单的独立博客搭建教程，内容不够完善，在我使用博客的过程中会不断实践并进行补充。">
@@ -234,7 +234,9 @@
 </code></pre><p>该命令会在\source_posts目录下心生成一个.md为后缀的<a href="http://baike.baidu.com/link?url=xNu_6Vbv6T8zOIdoIMAqofazcCQFYyLlskDSddWSjq9N3OhbPoLOX4zCuHY0kD2gEKGlyzbO9EFBpsgG_Ymfhq" target="_blank" rel="external">markdown</a>文件。当然也可以直接在\source_posts中新建一个md文件。用markdown编辑器将其打开就可以写文章了。</p>
 <p>markdown编辑器我使用的是<a href="http://markdownpad.com/" target="_blank" rel="external">markdownpad</a>。</p>
 <p>在写文章时如果需要使用图片，可以先把图片上传到github中再引用。github使用方法在下文。</p>
-<h2 id="4-更换主题"><a href="#4-更换主题" class="headerlink" title="4.更换主题"></a>4.更换主题</h2><p>hexo有很多主题<a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">可以从这里挑个</a>。</p>
+<p>hexo首页默认显示的是文章全文，如果你想只显示文章的简介，就在文章中你想在首页显示的部分后加上 </p>
+<pre><code>&lt;!--more--&gt;
+</code></pre><h2 id="4-更换主题"><a href="#4-更换主题" class="headerlink" title="4.更换主题"></a>4.更换主题</h2><p>hexo有很多主题<a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">可以从这里挑个</a>。</p>
 <p>以<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">hexo-theme-yilia</a>主题为例，在命令行窗口中执行如下命令将主题文件克隆到themes文件夹中：</p>
 <pre><code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
 </code></pre><p>然后打开站点配置文件_config.yml，找到theme 字段，并将其值更改为 yilia。然后执行</p>

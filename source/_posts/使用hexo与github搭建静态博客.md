@@ -39,6 +39,12 @@ tags: 博客相关
 markdown编辑器我使用的是[markdownpad](http://markdownpad.com/)。
 
 在写文章时如果需要使用图片，可以先把图片上传到github中再引用。github使用方法在下文。
+
+hexo首页默认显示的是文章全文，如果你想只显示文章的简介，就在文章中你想在首页显示的部分后加上 
+    
+    <!--more-->
+
+
 ## 4.更换主题 ##
 
 hexo有很多主题[可以从这里挑个](http://www.zhihu.com/question/24422335)。
