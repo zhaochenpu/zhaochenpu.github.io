@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android开发常用代码整理 | no name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有两个非IT行业的哥们毕业一年了，现在决定辞职参加Android培训，毅然决然加入程序猿队伍。一句“三百六十行,行行出码农”说的我有点方……
+整理了一下平时用到的比较多的一些工具类，很多代码来源网络，有自己的修改。
+希望对大家有用，好好学习天天向上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发常用代码整理">
+<meta property="og:url" content="http://yoursite.com/2016/03/08/Android开发常用代码/index.html">
+<meta property="og:site_name" content="no name">
+<meta property="og:description" content="有两个非IT行业的哥们毕业一年了，现在决定辞职参加Android培训，毅然决然加入程序猿队伍。一句“三百六十行,行行出码农”说的我有点方……
+整理了一下平时用到的比较多的一些工具类，很多代码来源网络，有自己的修改。
+希望对大家有用，好好学习天天向上。">
+<meta property="og:updated_time" content="2016-03-08T09:48:26.493Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发常用代码整理">
+<meta name="twitter:description" content="有两个非IT行业的哥们毕业一年了，现在决定辞职参加Android培训，毅然决然加入程序猿队伍。一句“三百六十行,行行出码农”说的我有点方……
+整理了一下平时用到的比较多的一些工具类，很多代码来源网络，有自己的修改。
+希望对大家有用，好好学习天天向上。">
+  
+    <link rel="alternative" href="/atom.xml" title="no name" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">赵晨璞</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/读书-公开课-笔记/" style="font-size: 20px;">读书&公开课 笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.androiddevtools.cn/">AndroidDevTools</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jcodecraeer.com/plus/list.php?tid=31">泡在网上的日子</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://linetoanywhere.github.io/">豪哥的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Android程序猿，单身狗。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">赵晨璞</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">赵晨璞</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android开发常用代码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/08/Android开发常用代码/" class="article-date">
+  	<time datetime="2016-03-07T16:00:00.000Z" itemprop="datePublished">2016-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android开发常用代码整理
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有两个非IT行业的哥们毕业一年了，现在决定辞职参加Android培训，毅然决然加入程序猿队伍。一句“三百六十行,行行出码农”说的我有点方……</p>
+<p>整理了一下平时用到的比较多的一些工具类，很多代码来源网络，有自己的修改。</p>
+<p>希望对大家有用，好好学习天天向上。<a id="more"></a></p>
+<h2 id="1-Toast统一管理类"><a href="#1-Toast统一管理类" class="headerlink" title="1.Toast统一管理类"></a>1.Toast统一管理类</h2><pre><code>public class ToastUtil {
+private ToastUtil()
+    {
+    /* cannot be instantiated */
+        throw new UnsupportedOperationException(&quot;cannot be instantiated&quot;);
+    }
+
+    public static boolean isShow = true;
+
+    /**
+     * 短时间显示Toast
+     */
+public static void showShort(Context context, CharSequence message)
+{
+    if (isShow)
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+}
+
+/**
+ * 短时间显示Toast
+ */
+public static void showShort(Context context, int message)
+{
+    if (isShow)
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+}
+
+/**
+ * 长时间显示Toast
+ */
+public static void showLong(Context context, CharSequence message)
+{
+    if (isShow)
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+}
+
+/**
+ * 长时间显示Toast
+ *
+ * @param context
+ * @param message
+ */
+public static void showLong(Context context, int message)
+{
+    if (isShow)
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+}
+
+/**
+ * 自定义显示Toast时间
+ *
+ * @param context
+ * @param message
+ * @param duration
+ */
+public static void show(Context context, CharSequence message, int duration)
+{
+    if (isShow)
+        Toast.makeText(context, message, duration).show();
+}
+
+/**
+ * 自定义显示Toast时间
+ *
+ * @param context
+ * @param message
+ * @param duration
+ */
+public static void show(Context context, int message, int duration)
+{
+    if (isShow)
+        Toast.makeText(context, message, duration).show();
+}
+
+}
+</code></pre><h2 id="2-Log统一管理类"><a href="#2-Log统一管理类" class="headerlink" title="2.Log统一管理类"></a>2.Log统一管理类</h2><pre><code>public class LogUtil {
+    private LogUtil()
+    {
+    /* cannot be instantiated */
+        throw new UnsupportedOperationException(&quot;cannot be instantiated&quot;);
+    }
+    public static boolean isDebug = true;// 是否需要打印
+    private static final String TAG = &quot;TAG&quot;;
+
+    // 下面四个是默认tag的函数
+    public static void i(String msg)
+    {
+        if (isDebug)
+            Log.i(TAG, msg);
+    }
+
+    public static void d(String msg)
+    {
+        if (isDebug)
+            Log.d(TAG, msg);
+    }
+
+    public static void e(String msg)
+    {
+        if (isDebug)
+            Log.e(TAG, msg);
+    }
+
+    public static void v(String msg)
+    {
+        if (isDebug)
+            Log.v(TAG, msg);
+    }
+
+    // 下面是传入自定义tag的函数
+    public static void i(String tag, String msg)
+    {
+        if (isDebug)
+            Log.i(tag, msg);
+    }
+
+    public static void d(String tag, String msg)
+    {
+        if (isDebug)
+            Log.d(tag, msg);
+    }
+
+    public static void e(String tag, String msg)
+    {
+        if (isDebug)
+            Log.e(tag, msg);
+    }
+
+    public static void v(String tag, String msg)
+    {
+        if (isDebug)
+            Log.v(tag, msg);
+    }
+}
+</code></pre><h2 id="3-屏幕相关信息类"><a href="#3-屏幕相关信息类" class="headerlink" title="3.屏幕相关信息类"></a>3.屏幕相关信息类</h2><pre><code>public class ScreenUtils {  
+private ScreenUtils()  
+{  
+    /* cannot be instantiated */  
+    throw new UnsupportedOperationException(&quot;cannot be instantiated&quot;);  
+}  
+
+/** 
+ * 获得屏幕高度 
+ */  
+public static int getScreenWidth(Context context)  
+{  
+    WindowManager wm = (WindowManager) context  
+            .getSystemService(Context.WINDOW_SERVICE);  
+    DisplayMetrics outMetrics = new DisplayMetrics();  
+    wm.getDefaultDisplay().getMetrics(outMetrics);  
+    return outMetrics.widthPixels;  
+}  
+
+/** 
+ * 获得屏幕宽度 
+ */  
+public static int getScreenHeight(Context context)  
+{  
+    WindowManager wm = (WindowManager) context  
+            .getSystemService(Context.WINDOW_SERVICE);  
+    DisplayMetrics outMetrics = new DisplayMetrics();  
+    wm.getDefaultDisplay().getMetrics(outMetrics);  
+    return outMetrics.heightPixels;  
+}  
+
+/** 
+ * 获得状态栏的高度 
+ */  
+public static int getStatusHeight(Context context)  
+{  
+
+    int statusHeight = -1;  
+    try  
+    {  
+        Class&lt;?&gt; clazz = Class.forName(&quot;com.android.internal.R$dimen&quot;);  
+        Object object = clazz.newInstance();  
+        int height = Integer.parseInt(clazz.getField(&quot;status_bar_height&quot;).get(object).toString());  
+        statusHeight = context.getResources().getDimensionPixelSize(height);  
+    } catch (Exception e)  
+    {  
+        e.printStackTrace();  
+    }  
+    return statusHeight;  
+}  
+
+/** 
+ * 获取当前屏幕截图，包含状态栏  
+ */  
+public static Bitmap snapShotWithStatusBar(Activity activity)  
+{  
+    View view = activity.getWindow().getDecorView();  
+    view.setDrawingCacheEnabled(true);  
+    view.buildDrawingCache();  
+    Bitmap bmp = view.getDrawingCache();  
+    int width = getScreenWidth(activity);  
+    int height = getScreenHeight(activity);  
+    Bitmap bp = null;  
+    bp = Bitmap.createBitmap(bmp, 0, 0, width, height);  
+    view.destroyDrawingCache();  
+    return bp;  
+
+}  
+
+/** 
+ * 获取当前屏幕截图，不包含状态栏 
+ */  
+public static Bitmap snapShotWithoutStatusBar(Activity activity)  
+{  
+    View view = activity.getWindow().getDecorView();  
+    view.setDrawingCacheEnabled(true);  
+    view.buildDrawingCache();  
+    Bitmap bmp = view.getDrawingCache();  
+    Rect frame = new Rect();  
+    activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);  
+    int statusBarHeight = frame.top;  
+
+    int width = getScreenWidth(activity);  
+    int height = getScreenHeight(activity);  
+    Bitmap bp = null;  
+    bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, width, height - statusBarHeight);  
+    view.destroyDrawingCache();  
+    return bp;   
+}    
+} 
+</code></pre><h2 id="4-px、dp、sp单位转换类"><a href="#4-px、dp、sp单位转换类" class="headerlink" title="4.px、dp、sp单位转换类"></a>4.px、dp、sp单位转换类</h2><pre><code>public class DisplayUtil { 
+/**
+ * 将px值转换为dip或dp值，保证尺寸大小不变
+ */ 
+public static int px2dip(Context context, float pxValue) { 
+    final float scale = context.getResources().getDisplayMetrics().density; 
+    return (int) (pxValue / scale + 0.5f); 
+} 
+
+/**
+ * 将dip或dp值转换为px值，保证尺寸大小不变
+ */ 
+public static int dip2px(Context context, float dipValue) { 
+    final float scale = context.getResources().getDisplayMetrics().density; 
+    return (int) (dipValue * scale + 0.5f); 
+} 
+
+/**
+ * 将px值转换为sp值，保证文字大小不变
+ */ 
+public static int px2sp(Context context, float pxValue) { 
+    final float fontScale = context.getResources().getDisplayMetrics().scaledDensity; 
+    return (int) (pxValue / fontScale + 0.5f); 
+} 
+
+/**
+ * 将sp值转换为px值，保证文字大小不变
+ */ 
+public static int sp2px(Context context, float spValue) { 
+    final float fontScale = context.getResources().getDisplayMetrics().scaledDensity; 
+    return (int) (spValue * fontScale + 0.5f); 
+} 
+}
+</code></pre><h2 id="5-SharedPreferences封装类"><a href="#5-SharedPreferences封装类" class="headerlink" title="5.SharedPreferences封装类"></a>5.SharedPreferences封装类</h2><pre><code>public class SPUtils{
+/**
+ * 保存在手机里面的文件名
+ */
+public static final String FILE_NAME = &quot;share_data&quot;;
+
+/**
+ * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法
+ */
+public static void put(Context context, String key, Object object)
+{
+
+    SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+            Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sp.edit();
+
+    if (object instanceof String)
+    {
+        editor.putString(key, (String) object);
+    } else if (object instanceof Integer)
+    {
+        editor.putInt(key, (Integer) object);
+    } else if (object instanceof Boolean)
+    {
+        editor.putBoolean(key, (Boolean) object);
+    } else if (object instanceof Float)
+    {
+        editor.putFloat(key, (Float) object);
+    } else if (object instanceof Long)
+    {
+        editor.putLong(key, (Long) object);
+    } else
+    {
+        editor.putString(key, object.toString());
+    }
+
+    SharedPreferencesCompat.apply(editor);
+}
+
+/**
+ * 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值
+ */
+public static Object get(Context context, String key, Object defaultObject)
+{
+    SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+            Context.MODE_PRIVATE);
+
+    if (defaultObject instanceof String)
+    {
+        return sp.getString(key, (String) defaultObject);
+    } else if (defaultObject instanceof Integer)
+    {
+        return sp.getInt(key, (Integer) defaultObject);
+    } else if (defaultObject instanceof Boolean)
+    {
+        return sp.getBoolean(key, (Boolean) defaultObject);
+    } else if (defaultObject instanceof Float)
+    {
+        return sp.getFloat(key, (Float) defaultObject);
+    } else if (defaultObject instanceof Long)
+    {
+        return sp.getLong(key, (Long) defaultObject);
+    }
+
+    return null;
+}
+
+/**
+ * 移除某个key值已经对应的值
+ */
+public static void remove(Context context, String key)
+{
+    SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+            Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sp.edit();
+    editor.remove(key);
+    SharedPreferencesCompat.apply(editor);
+}
+
+/**
+ * 清除所有数据
+ */
+public static void clear(Context context)
+{
+    SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+            Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sp.edit();
+    editor.clear();
+    SharedPreferencesCompat.apply(editor);
+}
+
+/**
+ * 查询某个key是否已经存在
+ */
+public static boolean contains(Context context, String key)
+{
+    SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+            Context.MODE_PRIVATE);
+    return sp.contains(key);
+}
+
+/**
+ * 返回所有的键值对
+ */
+public static Map&lt;String, ?&gt; getAll(Context context)
+{
+    SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
+            Context.MODE_PRIVATE);
+    return sp.getAll();
+}
+
+/**
+ * 创建一个解决SharedPreferencesCompat.apply方法的一个兼容类
+ */
+private static class SharedPreferencesCompat
+{
+    private static final Method sApplyMethod = findApplyMethod();
+
+    /**
+     * 反射查找apply的方法
+     */
+    @SuppressWarnings({ &quot;unchecked&quot;, &quot;rawtypes&quot; })
+    private static Method findApplyMethod()
+    {
+        try
+        {
+            Class clz = SharedPreferences.Editor.class;
+            return clz.getMethod(&quot;apply&quot;);
+        } catch (NoSuchMethodException e)
+        {
+        }
+
+        return null;
+    }
+
+    /**
+     * 如果找到则使用apply执行，否则使用commit
+     */
+    public static void apply(SharedPreferences.Editor editor)
+    {
+        try
+        {
+            if (sApplyMethod != null)
+            {
+                sApplyMethod.invoke(editor);
+                return;
+            }
+        } catch (IllegalArgumentException e)
+        {
+        } catch (IllegalAccessException e)
+        {
+        } catch (InvocationTargetException e)
+        {
+        }
+        editor.commit();
+    }
+}
+}
+</code></pre><h2 id="6-获取设备及APP相关信息类"><a href="#6-获取设备及APP相关信息类" class="headerlink" title="6.获取设备及APP相关信息类"></a>6.获取设备及APP相关信息类</h2><pre><code>public class DeviceUtil {
+
+private static String android_id;
+
+public String getSystemCode(){
+
+          String handSetInfo=
+          &quot;手机型号:&quot; + android.os.Build.MODEL + 
+          &quot;,SDK版本:&quot; + android.os.Build.VERSION.SDK + 
+          &quot;,系统版本:&quot; + android.os.Build.VERSION.RELEASE/*+
+          &quot;,软件版本:&quot;+getAppVersionName(MainActivity.this)*/; 
+         Log.i(&quot;设备信息&quot;, handSetInfo);
+    return null;
+}
+
+/**
+ * 获取手机的唯一标志(机器码)
+ * 
+ * */
+public static String getDeviceId(Context context){
+
+    if(TextUtils.isEmpty(android_id)){
+
+        android_id = Secure.getString(context.getContentResolver(),Secure.ANDROID_ID);
+    }
+
+    return android_id;
+}
+/**
+ * 获取当前设备的MAC地址
+ * 
+ * */
+public static String getMacAddress(Context context) {
+    String macAddress;
+       WifiManager wifi = (WifiManager) context .getSystemService(Context.WIFI_SERVICE);
+       WifiInfo info = wifi.getConnectionInfo();
+    macAddress = info.getMacAddress();
+    if (null == macAddress) {
+        return &quot;&quot;;
+        }
+       macAddress = macAddress.replace(&quot;:&quot;, &quot;&quot;);
+    return macAddress;
+}
+
+/**
+ * 获取应用版本号
+ */
+public static String getAppVersionName(Context mContext){
+    String versionName = &quot;&quot;;
+    try {
+        PackageManager packageManager = mContext.getPackageManager();
+        PackageInfo packageInfo = packageManager.getPackageInfo(&quot;com.eloancn.mclient&quot;, 0);
+        versionName = packageInfo.versionName;
+        if (TextUtils.isEmpty(versionName)) {
+            return &quot;&quot;;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return versionName;
+}
+
+/** 
+ * 获取应用程序名称 
+ */  
+public static String getAppName(Context context)  
+{  
+    try  
+    {  
+        PackageManager packageManager = context.getPackageManager();  
+        PackageInfo packageInfo = packageManager.getPackageInfo(  
+                context.getPackageName(), 0);  
+        int labelRes = packageInfo.applicationInfo.labelRes;  
+        return context.getResources().getString(labelRes);  
+    } catch (NameNotFoundException e)  
+    {  
+        e.printStackTrace();  
+    }  
+    return null;  
+}
+}
+</code></pre><h2 id="7-判断网络连接状态及连接类型"><a href="#7-判断网络连接状态及连接类型" class="headerlink" title="7.判断网络连接状态及连接类型"></a>7.判断网络连接状态及连接类型</h2><pre><code>public class NetWorkUtils {
+
+/**
+ * 判断网络的链接状态
+ * */
+public static boolean isConnected(Context mContext){
+
+    ConnectivityManager manager = (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo info = manager.getActiveNetworkInfo();
+
+    //返回网络的链接状态  true 链接,false 未链接
+    return (info != null &amp;&amp; info.isAvailable() &amp;&amp; info.isConnected());
+
+}
+
+/**
+ * 判断网络的链接类型
+ * */
+public static String connectType(Context mContext){
+
+    ConnectivityManager conMan = (ConnectivityManager) 
+            mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+    //gprs
+    State mobile = conMan.getNetworkInfo(0).getState();
+
+    // WIFI
+    State wifi = conMan.getNetworkInfo(1).getState();
+
+    if (mobile == NetworkInfo.State.CONNECTED || mobile == NetworkInfo.State.CONNECTING) {
+        //手机网络
+        return &quot;mobile&quot;;
+
+    } else if (wifi == NetworkInfo.State.CONNECTED || wifi == NetworkInfo.State.CONNECTING) {
+        //wifi网络
+        return &quot;wifi&quot;;
+    }else{
+        //未知网络
+        return &quot;other&quot;;
+    }
+}
+
+/** 
+ * 打开网络设置界面 
+ */  
+public static void openSetting(Activity activity)  
+{  
+    Intent intent = new Intent(&quot;/&quot;);  
+    ComponentName cm = new ComponentName(&quot;com.android.settings&quot;,  
+            &quot;com.android.settings.WirelessSettings&quot;);  
+    intent.setComponent(cm);  
+    intent.setAction(&quot;android.intent.action.VIEW&quot;);  
+    activity.startActivityForResult(intent, 0);  
+}
+}
+</code></pre><h2 id="8-打开或关闭软键盘"><a href="#8-打开或关闭软键盘" class="headerlink" title="8.打开或关闭软键盘"></a>8.打开或关闭软键盘</h2><pre><code>public class KeyBoardUtils {  
+/** 
+ * 打卡软键盘 
+ *  
+ * @param mEditText  输入框 
+ * @param mContext   上下文 
+ */  
+public static void openKeybord(EditText mEditText, Context mContext)  
+{  
+    InputMethodManager imm = (InputMethodManager) mContext  
+            .getSystemService(Context.INPUT_METHOD_SERVICE);  
+    imm.showSoftInput(mEditText, InputMethodManager.RESULT_SHOWN);  
+    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,  
+            InputMethodManager.HIDE_IMPLICIT_ONLY);  
+}  
+
+/** 
+ * 关闭软键盘 
+ *  
+ * @param mEditText 输入框 
+ * @param mContext  上下文 
+ */  
+public static void closeKeybord(EditText mEditText, Context mContext)  
+{  
+    InputMethodManager imm = (InputMethodManager) mContext  
+            .getSystemService(Context.INPUT_METHOD_SERVICE);  
+
+    imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);  
+}  
+
+/** 
+ * 通过定时器强制隐藏虚拟键盘 
+ */  
+public static void TimerHideKeyboard(final View v) {  
+    Timer timer = new Timer();  
+    timer.schedule(new TimerTask() {  
+        @Override  
+        public void run() {  
+            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);  
+            if (imm.isActive()) {  
+                imm.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);  
+            }  
+        }  
+    }, 10);  
+}  
+
+/** 
+ * 输入法是否显示 
+ */  
+public static boolean KeyBoard(EditText edittext) {  
+    boolean bool = false;  
+    InputMethodManager imm = (InputMethodManager) edittext.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);  
+    if (imm.isActive()) {  
+        bool = true;  
+    }  
+    return bool;  
+}  
+}  
+</code></pre><h2 id="9-字符串处理和一些判断"><a href="#9-字符串处理和一些判断" class="headerlink" title="9.字符串处理和一些判断"></a>9.字符串处理和一些判断</h2><pre><code>public class StringUtils {
+
+//判断是否有中文字符
+static String regEx = &quot;[\u4e00-\u9fa5]&quot;;
+static Pattern pat = Pattern.compile(regEx);
+/**
+ * 判断字符串中是否包含有中文文字
+ * */
+public static boolean isContainsChinese(String str)
+{
+    Matcher matcher = pat.matcher(str);
+    boolean flg = false;
+    if (matcher.find())    {
+        flg = true;
+    }
+    return flg;
+}
+
+/**
+ * String 转double类型(保留两位小数)
+ * */
+public static String convertToDouble(String str){
+
+    if(!TextUtils.isEmpty(str)){
+        try{
+            double d = Double.parseDouble(str);
+            if(d &gt; 0){
+                DecimalFormat format = new DecimalFormat(&quot;0.00&quot;);
+                String result  = format.format(d);
+                return result;
+            }else{
+                return &quot;0.00&quot;;
+            }
+        }catch(Exception e){
+            return &quot;0.00&quot;;
+        }
+    }else{
+        return &quot;0.00&quot;;
+    }
+}
+
+ /**
+   *提供字符串到字符串数组的转变,
+   *转变后的字符串以sStr作为分割符  
+   */  
+public static String[] Str2Strs(String tStr, String sStr) {  
+    StringTokenizer st = new StringTokenizer(tStr, sStr);  
+    String[] reStrs = new String[st.countTokens()];  
+    int n = 0;  
+    while (st.hasMoreTokens()) {  
+        reStrs[n] = st.nextToken();  
+        n++;  
+    }  
+    return reStrs;  
+} 
+
+/** 将String 替换操作，将str1替换为str2 * */  
+public static String replace(String str, String str1, String str2) {  
+    int n = -1;  
+    String subStr = &quot;&quot;;  
+    String re = &quot;&quot;;  
+    if ((n = str.indexOf(str1)) &gt; -1) {  
+        subStr = str.substring(n + str1.length(), str.length());  
+        re = str.substring(0, n) + str2 + replace(subStr, str1, str2);  
+    } else {  
+        re = str;  
+    }  
+    return re;  
+} 
+
+/** 
+ * 判断邮箱地址的正确性 
+ */
+ public static boolean isMail(String string) {  
+        if (null != string) {  
+            if (string.matches(&quot;^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$&quot;)) {  
+                return true;  
+            }  
+        }  
+        return false;  
+    }  
+
+    /** 
+     * 判断手机号码的正确性 
+     */  
+    public static boolean isMobileNumber(String mobiles) {  
+
+        if (null != mobiles) {  
+            Pattern p = Pattern  
+                    .compile(&quot;^((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$&quot;);  
+            Matcher m = p.matcher(mobiles);  
+            return m.matches();  
+        }else {  
+            return false;  
+        }  
+    } 
+
+/**
+ * 检测身份证号格式是否正确
+ */
+public static boolean checkIdNum(String idNum)
+{
+    String regExp=&quot;^(\\d{15}$|^\\d{18}$|^\\d{17}(\\d|X|x))$&quot;;
+    Pattern p = Pattern.compile(regExp);
+    Matcher m = p.matcher(idNum);
+    return m.find();
+}
+}
+</code></pre><h2 id="10-4-4版本沉浸式状态栏"><a href="#10-4-4版本沉浸式状态栏" class="headerlink" title="10.4.4版本沉浸式状态栏"></a>10.4.4版本沉浸式状态栏</h2><p>主要代码来源于<a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">SystemBarTint</a>，增加了对MIUI和FLYME的适配</p>
+<pre><code>public class SystemBarTintManager {
+
+static {
+    // Android allows a system property to override the presence of the navigation bar.
+    // Used by the emulator.
+    // See https://github.com/android/platform_frameworks_base/blob/master/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java#L1076
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+        try {
+            Class c = Class.forName(&quot;android.os.SystemProperties&quot;);
+            Method m = c.getDeclaredMethod(&quot;get&quot;, String.class);
+            m.setAccessible(true);
+            sNavBarOverride = (String) m.invoke(null, &quot;qemu.hw.mainkeys&quot;);
+        } catch (Throwable e) {
+            sNavBarOverride = null;
+        }
+    }
+}
+
+/**
+ * The default system bar tint color value.
+ */
+public static final int DEFAULT_TINT_COLOR = 0x99000000;
+
+private static String sNavBarOverride;
+
+private final SystemBarConfig mConfig;
+private boolean mStatusBarAvailable;
+private boolean mNavBarAvailable;
+private boolean mStatusBarTintEnabled;
+private boolean mNavBarTintEnabled;
+private View mStatusBarTintView;
+private View mNavBarTintView;
+
+/**
+ * Constructor. Call this in the host activity onCreate method after its
+ * content view has been set. You should always create new instances when
+ * the host activity is recreated.
+ *
+ * @param activity The host activity.
+ */
+@TargetApi(19)
+public SystemBarTintManager(Activity activity) {
+
+    Window win = activity.getWindow();
+    ViewGroup decorViewGroup = (ViewGroup) win.getDecorView();
+
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+        // check theme attrs
+        int[] attrs = {android.R.attr.windowTranslucentStatus,
+                android.R.attr.windowTranslucentNavigation};
+        TypedArray a = activity.obtainStyledAttributes(attrs);
+        try {
+            mStatusBarAvailable = a.getBoolean(0, false);
+            mNavBarAvailable = a.getBoolean(1, false);
+        } finally {
+            a.recycle();
+        }
+
+        // check window flags
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if ((winParams.flags &amp; bits) != 0) {
+            mStatusBarAvailable = true;
+        }
+        bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
+        if ((winParams.flags &amp; bits) != 0) {
+            mNavBarAvailable = true;
+        }
+    }
+
+    mConfig = new SystemBarConfig(activity, mStatusBarAvailable, mNavBarAvailable);
+    // device might not have virtual navigation keys
+    if (!mConfig.hasNavigtionBar()) {
+        mNavBarAvailable = false;
+    }
+
+    if (mStatusBarAvailable) {
+        setupStatusBarView(activity, decorViewGroup);
+    }
+    if (mNavBarAvailable) {
+        setupNavBarView(activity, decorViewGroup);
+    }
+}
+
+/**
+ * Enable tinting of the system status bar.
+ *
+ * If the platform is running Jelly Bean or earlier, or translucent system
+ * UI modes have not been enabled in either the theme or via window flags,
+ * then this method does nothing.
+ *
+ * @param enabled True to enable tinting, false to disable it (default).
+ */
+public void setStatusBarTintEnabled(boolean enabled) {
+    mStatusBarTintEnabled = enabled;
+    if (mStatusBarAvailable) {
+        mStatusBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);
+    }
+}
+
+/**
+ * Enable tinting of the system navigation bar.
+ *
+ * If the platform does not have soft navigation keys, is running Jelly Bean
+ * or earlier, or translucent system UI modes have not been enabled in either
+ * the theme or via window flags, then this method does nothing.
+ *
+ * @param enabled True to enable tinting, false to disable it (default).
+ */
+public void setNavigationBarTintEnabled(boolean enabled) {
+    mNavBarTintEnabled = enabled;
+    if (mNavBarAvailable) {
+        mNavBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);
+    }
+}
+
+/**
+ * Apply the specified color tint to all system UI bars.
+ *
+ * @param color The color of the background tint.
+ */
+public void setTintColor(int color) {
+    setStatusBarTintColor(color);
+    setNavigationBarTintColor(color);
+}
+
+/**
+ * Apply the specified drawable or color resource to all system UI bars.
+ *
+ * @param res The identifier of the resource.
+ */
+public void setTintResource(int res) {
+    setStatusBarTintResource(res);
+    setNavigationBarTintResource(res);
+}
+
+/**
+ * Apply the specified drawable to all system UI bars.
+ *
+ * @param drawable The drawable to use as the background, or null to remove it.
+ */
+public void setTintDrawable(Drawable drawable) {
+    setStatusBarTintDrawable(drawable);
+    setNavigationBarTintDrawable(drawable);
+}
+
+/**
+ * Apply the specified alpha to all system UI bars.
+ *
+ * @param alpha The alpha to use
+ */
+public void setTintAlpha(float alpha) {
+    setStatusBarAlpha(alpha);
+    setNavigationBarAlpha(alpha);
+}
+
+/**
+ * Apply the specified color tint to the system status bar.
+ *
+ * @param color The color of the background tint.
+ */
+public void setStatusBarTintColor(int color) {
+    if (mStatusBarAvailable) {
+        mStatusBarTintView.setBackgroundColor(color);
+    }
+}
+
+/**
+ * Apply the specified drawable or color resource to the system status bar.
+ *
+ * @param res The identifier of the resource.
+ */
+public void setStatusBarTintResource(int res) {
+    if (mStatusBarAvailable) {
+        mStatusBarTintView.setBackgroundResource(res);
+    }
+}
+
+/**
+ * Apply the specified drawable to the system status bar.
+ *
+ * @param drawable The drawable to use as the background, or null to remove it.
+ */
+@SuppressWarnings(&quot;deprecation&quot;)
+public void setStatusBarTintDrawable(Drawable drawable) {
+    if (mStatusBarAvailable) {
+        mStatusBarTintView.setBackgroundDrawable(drawable);
+    }
+}
+
+/**
+ * Apply the specified alpha to the system status bar.
+ *
+ * @param alpha The alpha to use
+ */
+@TargetApi(11)
+public void setStatusBarAlpha(float alpha) {
+    if (mStatusBarAvailable &amp;&amp; Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB) {
+        mStatusBarTintView.setAlpha(alpha);
+    }
+}
+
+/**
+ * Apply the specified color tint to the system navigation bar.
+ *
+ * @param color The color of the background tint.
+ */
+public void setNavigationBarTintColor(int color) {
+    if (mNavBarAvailable) {
+        mNavBarTintView.setBackgroundColor(color);
+    }
+}
+
+/**
+ * Apply the specified drawable or color resource to the system navigation bar.
+ *
+ * @param res The identifier of the resource.
+ */
+public void setNavigationBarTintResource(int res) {
+    if (mNavBarAvailable) {
+        mNavBarTintView.setBackgroundResource(res);
+    }
+}
+
+/**
+ * Apply the specified drawable to the system navigation bar.
+ *
+ * @param drawable The drawable to use as the background, or null to remove it.
+ */
+@SuppressWarnings(&quot;deprecation&quot;)
+public void setNavigationBarTintDrawable(Drawable drawable) {
+    if (mNavBarAvailable) {
+        mNavBarTintView.setBackgroundDrawable(drawable);
+    }
+}
+
+/**
+ * Apply the specified alpha to the system navigation bar.
+ *
+ * @param alpha The alpha to use
+ */
+@TargetApi(11)
+public void setNavigationBarAlpha(float alpha) {
+    if (mNavBarAvailable &amp;&amp; Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB) {
+        mNavBarTintView.setAlpha(alpha);
+    }
+}
+
+/**
+ * Get the system bar configuration.
+ *
+ * @return The system bar configuration for the current device configuration.
+ */
+public SystemBarConfig getConfig() {
+    return mConfig;
+}
+
+/**
+ * Is tinting enabled for the system status bar?
+ *
+ * @return True if enabled, False otherwise.
+ */
+public boolean isStatusBarTintEnabled() {
+    return mStatusBarTintEnabled;
+}
+
+/**
+ * Is tinting enabled for the system navigation bar?
+ *
+ * @return True if enabled, False otherwise.
+ */
+public boolean isNavBarTintEnabled() {
+    return mNavBarTintEnabled;
+}
+
+private void setupStatusBarView(Context context, ViewGroup decorViewGroup) {
+    mStatusBarTintView = new View(context);
+    LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, mConfig.getStatusBarHeight());
+    params.gravity = Gravity.TOP;
+    if (mNavBarAvailable &amp;&amp; !mConfig.isNavigationAtBottom()) {
+        params.rightMargin = mConfig.getNavigationBarWidth();
+    }
+    mStatusBarTintView.setLayoutParams(params);
+    mStatusBarTintView.setBackgroundColor(DEFAULT_TINT_COLOR);
+    mStatusBarTintView.setVisibility(View.GONE);
+    decorViewGroup.addView(mStatusBarTintView);
+}
+
+private void setupNavBarView(Context context, ViewGroup decorViewGroup) {
+    mNavBarTintView = new View(context);
+    LayoutParams params;
+    if (mConfig.isNavigationAtBottom()) {
+        params = new LayoutParams(LayoutParams.MATCH_PARENT, mConfig.getNavigationBarHeight());
+        params.gravity = Gravity.BOTTOM;
+    } else {
+        params = new LayoutParams(mConfig.getNavigationBarWidth(), LayoutParams.MATCH_PARENT);
+        params.gravity = Gravity.RIGHT;
+    }
+    mNavBarTintView.setLayoutParams(params);
+    mNavBarTintView.setBackgroundColor(DEFAULT_TINT_COLOR);
+    mNavBarTintView.setVisibility(View.GONE);
+    decorViewGroup.addView(mNavBarTintView);
+}
+
+/**
+ * Class which describes system bar sizing and other characteristics for the current
+ * device configuration.
+ *
+ */
+public static class SystemBarConfig {
+
+    private static final String STATUS_BAR_HEIGHT_RES_NAME = &quot;status_bar_height&quot;;
+    private static final String NAV_BAR_HEIGHT_RES_NAME = &quot;navigation_bar_height&quot;;
+    private static final String NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME = &quot;navigation_bar_height_landscape&quot;;
+    private static final String NAV_BAR_WIDTH_RES_NAME = &quot;navigation_bar_width&quot;;
+    private static final String SHOW_NAV_BAR_RES_NAME = &quot;config_showNavigationBar&quot;;
+
+    private final boolean mTranslucentStatusBar;
+    private final boolean mTranslucentNavBar;
+    private final int mStatusBarHeight;
+    private final int mActionBarHeight;
+    private final boolean mHasNavigationBar;
+    private final int mNavigationBarHeight;
+    private final int mNavigationBarWidth;
+    private final boolean mInPortrait;
+    private final float mSmallestWidthDp;
+
+    private SystemBarConfig(Activity activity, boolean translucentStatusBar, boolean traslucentNavBar) {
+        Resources res = activity.getResources();
+        mInPortrait = (res.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT);
+        mSmallestWidthDp = getSmallestWidthDp(activity);
+        mStatusBarHeight = getInternalDimensionSize(res, STATUS_BAR_HEIGHT_RES_NAME);
+        mActionBarHeight = getActionBarHeight(activity);
+        mNavigationBarHeight = getNavigationBarHeight(activity);
+        mNavigationBarWidth = getNavigationBarWidth(activity);
+        mHasNavigationBar = (mNavigationBarHeight &gt; 0);
+        mTranslucentStatusBar = translucentStatusBar;
+        mTranslucentNavBar = traslucentNavBar;
+    }
+
+    @TargetApi(14)
+    private int getActionBarHeight(Context context) {
+        int result = 0;
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            TypedValue tv = new TypedValue();
+            context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
+            result = TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
+        }
+        return result;
+    }
+
+    @TargetApi(14)
+    private int getNavigationBarHeight(Context context) {
+        Resources res = context.getResources();
+        int result = 0;
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            if (hasNavBar(context)) {
+                String key;
+                if (mInPortrait) {
+                    key = NAV_BAR_HEIGHT_RES_NAME;
+                } else {
+                    key = NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME;
+                }
+                return getInternalDimensionSize(res, key);
+            }
+        }
+        return result;
+    }
+
+    @TargetApi(14)
+    private int getNavigationBarWidth(Context context) {
+        Resources res = context.getResources();
+        int result = 0;
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            if (hasNavBar(context)) {
+                return getInternalDimensionSize(res, NAV_BAR_WIDTH_RES_NAME);
+            }
+        }
+        return result;
+    }
+
+    @TargetApi(14)
+    private boolean hasNavBar(Context context) {
+        Resources res = context.getResources();
+        int resourceId = res.getIdentifier(SHOW_NAV_BAR_RES_NAME, &quot;bool&quot;, &quot;android&quot;);
+        if (resourceId != 0) {
+            boolean hasNav = res.getBoolean(resourceId);
+            // check override flag (see static block)
+            if (&quot;1&quot;.equals(sNavBarOverride)) {
+                hasNav = false;
+            } else if (&quot;0&quot;.equals(sNavBarOverride)) {
+                hasNav = true;
+            }
+            return hasNav;
+        } else { // fallback
+            return !ViewConfiguration.get(context).hasPermanentMenuKey();
+        }
+    }
+
+    private int getInternalDimensionSize(Resources res, String key) {
+        int result = 0;
+        int resourceId = res.getIdentifier(key, &quot;dimen&quot;, &quot;android&quot;);
+        if (resourceId &gt; 0) {
+            result = res.getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    @SuppressLint(&quot;NewApi&quot;)
+    private float getSmallestWidthDp(Activity activity) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.JELLY_BEAN) {
+            activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        } else {
+            // TODO this is not correct, but we don&apos;t really care pre-kitkat
+            activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        }
+        float widthDp = metrics.widthPixels / metrics.density;
+        float heightDp = metrics.heightPixels / metrics.density;
+        return Math.min(widthDp, heightDp);
+    }
+
+    /**
+     * Should a navigation bar appear at the bottom of the screen in the current
+     * device configuration? A navigation bar may appear on the right side of
+     * the screen in certain configurations.
+     *
+     * @return True if navigation should appear at the bottom of the screen, False otherwise.
+     */
+    public boolean isNavigationAtBottom() {
+        return (mSmallestWidthDp &gt;= 600 || mInPortrait);
+    }
+
+    /**
+     * Get the height of the system status bar.
+     *
+     * @return The height of the status bar (in pixels).
+     */
+    public int getStatusBarHeight() {
+        return mStatusBarHeight;
+    }
+
+    /**
+     * Get the height of the action bar.
+     *
+     * @return The height of the action bar (in pixels).
+     */
+    public int getActionBarHeight() {
+        return mActionBarHeight;
+    }
+
+    /**
+     * Does this device have a system navigation bar?
+     *
+     * @return True if this device uses soft key navigation, False otherwise.
+     */
+    public boolean hasNavigtionBar() {
+        return mHasNavigationBar;
+    }
+
+    /**
+     * Get the height of the system navigation bar.
+     *
+     * @return The height of the navigation bar (in pixels). If the device does not have
+     * soft navigation keys, this will always return 0.
+     */
+    public int getNavigationBarHeight() {
+        return mNavigationBarHeight;
+    }
+
+    /**
+     * Get the width of the system navigation bar when it is placed vertically on the screen.
+     *
+     * @return The width of the navigation bar (in pixels). If the device does not have
+     * soft navigation keys, this will always return 0.
+     */
+    public int getNavigationBarWidth() {
+        return mNavigationBarWidth;
+    }
+
+    /**
+     * Get the layout inset for any system UI that appears at the top of the screen.
+     *
+     * @param withActionBar True to include the height of the action bar, False otherwise.
+     * @return The layout inset (in pixels).
+     */
+    public int getPixelInsetTop(boolean withActionBar) {
+        return (mTranslucentStatusBar ? mStatusBarHeight : 0) + (withActionBar ? mActionBarHeight : 0);
+    }
+
+    /**
+     * Get the layout inset for any system UI that appears at the bottom of the screen.
+     *
+     * @return The layout inset (in pixels).
+     */
+    public int getPixelInsetBottom() {
+        if (mTranslucentNavBar &amp;&amp; isNavigationAtBottom()) {
+            return mNavigationBarHeight;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Get the layout inset for any system UI that appears at the right of the screen.
+     *
+     * @return The layout inset (in pixels).
+     */
+    public int getPixelInsetRight() {
+        if (mTranslucentNavBar &amp;&amp; !isNavigationAtBottom()) {
+            return mNavigationBarWidth;
+        } else {
+            return 0;
+        }
+    }
+
+}
+@TargetApi(19) 
+  private static void setTranslucentStatus(boolean on,Activity activity) {
+      Window win = activity.getWindow();
+      WindowManager.LayoutParams winParams = win.getAttributes();
+      final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+      if (on) {
+          winParams.flags |= bits;
+      } else {
+          winParams.flags &amp;= ~bits;
+      }
+      win.setAttributes(winParams);
+  }
+
+/**
+ * 状态栏改为透明
+ * 支持4.4以上版本
+ */
+public static void transparencyBar(Activity activity){
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+        Window window =activity.getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+}
+}
+/**
+ * 状态栏改为透明
+ * 支持4.4以上版本
+ */
+public static void transparencyBar(Window window){
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    }
+}
+/**
+ * 状态栏改为自定义颜色
+ * 支持4.4以上版本
+ * @param activity
+ * @param color
+ */
+  public static void ColorBar(Activity activity,int color){
+      if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {  
+          setTranslucentStatus(true,activity);
+          SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+          tintManager.setStatusBarTintEnabled(true);
+          tintManager.setStatusBarTintResource(color);
+      }        
+  }
+/**
+ * 状态栏改为自定义颜色,fitssystemwindows设置是否要窗口适应屏幕
+ * 支持4.4以上版本
+ * @param activity
+ * @param color
+ * @param fitssystemwindows
+ */
+  public static void ColorBar(Activity activity,int color,boolean fitssystemwindows){
+      if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {  
+          if(fitssystemwindows){
+              //设置根布局适合窗口
+              ((ViewGroup)activity.findViewById(android.R.id.content)).getChildAt(0).setFitsSystemWindows(true);
+          }
+          setTranslucentStatus(true,activity);
+          SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+          tintManager.setStatusBarTintEnabled(true);
+          tintManager.setStatusBarTintResource(color);
+      }        
+  }
+  /**
+   * 设置状态栏为白底黑字，fitssystemwindows设置为否会使布局上移充满屏幕（包括状态栏）
+   * 支持4.4以上版本
+   * result为1是MIUIV6或V7 2为Flyme 
+   * 黑色状态栏图标及文字目前只支持这俩系统
+   * 
+   * @return
+   */
+  public static int setWhiteStatusBarDarkIcon(Activity activity,boolean fitssystemwindows){
+      int result=0;
+      if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+          if(MIUISetStatusBarDarkIcon(activity.getWindow(), true)){
+                  ColorBar(activity,R.color.white,fitssystemwindows);
+                  result=1;
+          }else if(FlymeSetStatusBarDarkIcon(activity.getWindow(), true)){     
+                  ColorBar(activity,R.color.white,fitssystemwindows);
+                result=2;              
+        }            
+      }
+      return result;
+  }
+
+  /**
+   * 设置状态栏为透明背景 黑字
+   * 支持4.4以上版本
+   * result为1是MIUIV6或V7 2为Flyme 
+   * 黑色状态栏图标及文字目前只支持这俩系统
+   * 根布局不设置FitsSystemWindows为true的话布局会整体上移
+   */
+  public static int SetTransparencyStatusBarDarkIcon(Window window){
+      int result=0;               
+      if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {      
+          if(MIUISetStatusBarDarkIcon(window, true)){
+              transparencyBar(window);               
+                  result=1;           
+          }else if(FlymeSetStatusBarDarkIcon(window, true)){
+                transparencyBar(window);
+                result=2;               
+        }            
+      }
+      return result;
+  }
+
+  /**
+   * 清除MIUI或flyme黑色状态栏主题
+   */
+  public static boolean clearDarkIcon(Activity activity,int type){
+      boolean result = false;
+      if(type==1){
+          result=MIUISetStatusBarDarkIcon(activity.getWindow(), false);
+      }else if(type==2){
+          result=FlymeSetStatusBarDarkIcon(activity.getWindow(), false);
+      }
+      return result;
+  }
+
+
+  /**
+   * 设置状态栏图标为深色和魅族特定的文字风格
+   * @param window 需要设置的窗口
+   * @param dark 是否把状态栏文字和图标颜色设置为深色
+   * @return  boolean 成功执行返回true
+   * 
+   */
+  public static boolean FlymeSetStatusBarDarkIcon(Window window, boolean dark) {
+      boolean result = false;
+      if (window != null) {
+          try {
+              WindowManager.LayoutParams lp = window.getAttributes();
+              Field darkFlag = WindowManager.LayoutParams.class
+                      .getDeclaredField(&quot;MEIZU_FLAG_DARK_STATUS_BAR_ICON&quot;);
+              Field meizuFlags = WindowManager.LayoutParams.class
+                      .getDeclaredField(&quot;meizuFlags&quot;);
+              darkFlag.setAccessible(true);
+              meizuFlags.setAccessible(true);
+              int bit = darkFlag.getInt(null);
+              int value = meizuFlags.getInt(lp);
+              if (dark) {
+                  value |= bit;//状态栏黑色字体
+              } else {
+                  value &amp;= ~bit;//清除黑色字体
+              }
+              meizuFlags.setInt(lp, value);
+              window.setAttributes(lp);
+              result = true;
+          } catch (Exception e) {
+              LogUtil.e(&quot;&quot;, &quot;FlymeSetStatusBarDarkIcon: failed&quot;);
+          }
+      }
+      return result;
+  }
+    /**
+       * 需要MIUIV6及以上
+       * @param window 需要设置的窗口
+       * @param dark 是否把状态栏文字和图标设置为深色
+       * @return  boolean 成功执行返回true
+       * 
+       */
+      public static boolean MIUISetStatusBarDarkIcon(Window window, boolean dark) {
+          boolean result = false;
+          if (window != null) {
+              Class clazz = window.getClass(); 
+              try {
+                  int darkModeFlag = 0;
+                  Class layoutParams = Class.forName(&quot;android.view.MiuiWindowManager$LayoutParams&quot;);
+                  Field  field = layoutParams.getField(&quot;EXTRA_FLAG_STATUS_BAR_DARK_MODE&quot;);
+                  darkModeFlag = field.getInt(layoutParams);
+                  Method extraFlagField = clazz.getMethod(&quot;setExtraFlags&quot;, int.class, int.class);       
+                  if(dark){                                
+                      extraFlagField.invoke(window,darkModeFlag,darkModeFlag);//状态栏透明且黑色字体
+                  }else{
+                      extraFlagField.invoke(window, 0, darkModeFlag);//清除黑色字体
+                  }                    
+                  result=true;
+              }catch (Exception e){
+                  LogUtil.e(&quot;&quot;, &quot;MIUIsetStatusBarDarkIcon: failed&quot;);
+              }
+          }
+          return result;
+      }
+  }
+</code></pre><h2 id="11-处理图片工具类"><a href="#11-处理图片工具类" class="headerlink" title="11.处理图片工具类"></a>11.处理图片工具类</h2><pre><code>public class BitmapUtil {
+
+private static final int STROKE_WIDTH = 4;
+
+/**
+ * 读取本地资源的图片
+ * 
+ * @param context
+ * @param resId
+ * @return
+ */
+public static Bitmap ReadBitmapById(Context context, int resId) {
+    BitmapFactory.Options opt = new BitmapFactory.Options();
+    opt.inPreferredConfig = Bitmap.Config.RGB_565;
+    opt.inPurgeable = true;
+    opt.inInputShareable = true;
+    // 获取资源图片
+    InputStream is = context.getResources().openRawResource(resId);
+    return BitmapFactory.decodeStream(is, null, opt);
+}
+
+/***
+ * 根据资源文件获取Bitmap
+ * 
+ * @param context
+ * @param drawableId
+ * @return
+ */
+public static Bitmap ReadBitmapById(Context context, int drawableId,
+        int screenWidth, int screenHight) {
+    BitmapFactory.Options options = new BitmapFactory.Options();
+    options.inPreferredConfig = Config.ARGB_8888;
+    options.inInputShareable = true;
+    options.inPurgeable = true;
+    InputStream stream = context.getResources().openRawResource(drawableId);
+    Bitmap bitmap = BitmapFactory.decodeStream(stream, null, options);
+    return getBitmap(bitmap, screenWidth, screenHight);
+}
+
+/***
+ * 等比例压缩图片
+ * 
+ * @param bitmap
+ * @param screenWidth
+ * @param screenHight
+ * @return
+ */
+public static Bitmap getBitmap(Bitmap bitmap, int screenWidth,
+        int screenHight) {
+    int w = bitmap.getWidth();
+    int h = bitmap.getHeight();
+    Log.e(&quot;jj&quot;, &quot;图片宽度&quot; + w + &quot;,screenWidth=&quot; + screenWidth);
+    Matrix matrix = new Matrix();
+    float scale = (float) screenWidth / w;
+    float scale2 = (float) screenHight / h;
+    // scale = scale &lt; scale2 ? scale : scale2;
+    // 保证图片不变形.
+    matrix.postScale(scale, scale);
+    // w,h是原图的属性.
+    return Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
+}
+
+/***
+ * 保存图片至SD卡
+ * 
+ * @param bm
+ * @param url
+ * @param quantity
+ */
+private static int FREE_SD_SPACE_NEEDED_TO_CACHE = 1;
+private static int MB = 1024 * 1024;
+public final static String DIR = &quot;/sdcard/Eloancn&quot;;
+
+public static void saveBmpToSd(Bitmap bm, String url, int quantity) {
+    // 判断sdcard上的空间
+    if (FREE_SD_SPACE_NEEDED_TO_CACHE &gt; freeSpaceOnSd()) {
+        return;
+    }
+    if (!Environment.MEDIA_MOUNTED.equals(Environment
+            .getExternalStorageState()))
+        return;
+    String filename = url;
+    // 目录不存在就创建
+    File dirPath = new File(DIR);
+    if (!dirPath.exists()) {
+        dirPath.mkdirs();
+    }
+
+    File file = new File(DIR + &quot;/&quot; + filename);
+    try {
+        file.createNewFile();
+        OutputStream outStream = new FileOutputStream(file);
+        bm.compress(Bitmap.CompressFormat.PNG, quantity, outStream);
+        outStream.flush();
+        outStream.close();
+
+    } catch (FileNotFoundException e) {
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+}
+
+/***
+ * 获取SD卡图片
+ * 
+ * @param url
+ * @param quantity
+ * @return
+ */
+public static Bitmap GetBitmap(String url, int quantity) {
+    InputStream inputStream = null;
+    String filename = &quot;&quot;;
+    Bitmap map = null;
+    URL url_Image = null;
+    String LOCALURL = &quot;&quot;;
+    if (url == null)
+        return null;
+    try {
+        filename = url;
+    } catch (Exception err) {
+    }
+
+    LOCALURL = URLEncoder.encode(filename);
+    if (Exist(DIR + &quot;/&quot; + LOCALURL)) {
+        map = BitmapFactory.decodeFile(DIR + &quot;/&quot; + LOCALURL);
+    } else {
+        try {
+            url_Image = new URL(url);
+            inputStream = url_Image.openStream();
+            map = BitmapFactory.decodeStream(inputStream);
+            // url = URLEncoder.encode(url, &quot;UTF-8&quot;);
+            if (map != null) {
+                saveBmpToSd(map, LOCALURL, quantity);
+            }
+            inputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    return map;
+}
+
+/***
+ * 判断图片是存在
+ * 
+ * @param url
+ * @return
+ */
+public static boolean Exist(String url) {
+    File file = new File(DIR + url);
+    return file.exists();
+}
+
+/**
+ * 缩放图片
+ * 
+ * @param bitmap
+ * @param f
+ * @return
+ */
+public static Bitmap zoom(Bitmap bitmap, float zf) {
+    Matrix matrix = new Matrix();
+    matrix.postScale(zf, zf);
+    return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
+            bitmap.getHeight(), matrix, true);
+}
+
+/**
+ * 缩放图片
+ * 
+ * @param bitmap
+ * @param f
+ * @return
+ */
+public static Bitmap zoom(Bitmap bitmap, float wf, float hf) {
+    Matrix matrix = new Matrix();
+    matrix.postScale(wf, hf);
+    return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
+            bitmap.getHeight(), matrix, true);
+}
+
+//从文件中读取图片,并转换成圆形bitmap
+public static  Bitmap toRoundBitmap(Context context,int drawableId) {
+     Resources res = context.getResources();  
+        Bitmap bitmap = BitmapFactory.decodeResource(res, drawableId);  
+     int width = bitmap.getWidth();
+     int height = bitmap.getHeight();
+     float roundPx;
+     float left,top,right,bottom,dst_left,dst_top,dst_right,dst_bottom;
+     if (width &lt;= height) {
+          roundPx = width / 2;
+          top = 0;
+          left = 0;
+          bottom = width;
+          right = width;
+          height = width;
+          dst_left = 0;
+          dst_top = 0;
+          dst_right = width;
+          dst_bottom = width;
+      } else {
+          roundPx = height / 2;
+          float clip = (width - height) / 2;
+          left = clip;
+          right = width - clip;
+          top = 0;
+          bottom = height;
+          width = height;
+          dst_left = 0;
+          dst_top = 0;
+          dst_right = height;
+          dst_bottom = height;
+     }
+
+        Bitmap output = Bitmap.createBitmap(width,
+        height, Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect src = new Rect((int)left, (int)top, (int)right, (int)bottom);
+        final Rect dst = new Rect((int)dst_left, (int)dst_top, (int)dst_right, (int)dst_bottom);
+        final RectF rectF = new RectF(dst);
+
+        paint.setAntiAlias(true);
+
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(Color.WHITE);
+        paint.setStrokeWidth(4); 
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, src, dst, paint);
+
+        //画白色圆圈
+        paint.reset();
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(STROKE_WIDTH);
+        paint.setAntiAlias(true);
+        canvas.drawCircle(width / 2, width / 2, width / 2 - STROKE_WIDTH / 2, paint);
+        return output ; 
+    }
+
+
+// 对bitmap进行处理,画圆形
+public static Bitmap getCroppedBitmap(Bitmap bitmap) {
+    Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+            bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+
+    final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+    Canvas canvas = new Canvas(output);
+
+    final Paint paint = new Paint();
+    paint.setAntiAlias(true);
+    int halfWidth = bitmap.getWidth() / 2;
+    int halfHeight = bitmap.getHeight() / 2;
+
+    canvas.drawCircle(halfWidth, halfHeight,
+            Math.max(halfWidth, halfHeight), paint);
+
+    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+
+    canvas.drawBitmap(bitmap, rect, rect, paint);
+
+    return output;
+}
+
+public Bitmap getBitmapFromUri(String ImageUri, int width) {
+    HttpURLConnection conn = null;
+    Bitmap newBitmap = null;
+    try {
+        URL uri = new URL(ImageUri);
+        conn = (HttpURLConnection) uri.openConnection();
+        conn.setReadTimeout(5000);
+        conn.setConnectTimeout(5000);
+        conn.connect();
+        int code = conn.getResponseCode();
+        if (code == 200) {
+            InputStream is = conn.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
+            int oWidth = bitmap.getWidth();
+            int oHeight = bitmap.getHeight();
+            Matrix matrix = new Matrix();
+            float sx = (float) width / (float) oWidth;
+            float sy = (float) width / (float) oHeight;
+            matrix.setScale(sx, sy);
+            newBitmap = Bitmap.createBitmap(bitmap, 0, 0, oWidth, oHeight,
+                    matrix, true);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        conn.disconnect();
+    }
+    return newBitmap;
+}
+/**
+ * 字节转化成Bitmap
+ * 
+ * @param b
+ * @return
+ */
+public static Bitmap bytes2Bimap(byte[] b) {
+    if (b.length != 0) {
+        return BitmapFactory.decodeByteArray(b, 0, b.length);
+    } else {
+        return null;
+    }
+}
+
+/** * 计算sdcard上的剩余空间 * @return */
+private static int freeSpaceOnSd() {
+    StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    double sdFreeMB = ((double) stat.getAvailableBlocks() * (double) stat.getBlockSize()) / MB;
+    return (int) sdFreeMB;
+}
+
+
+public static String getSDPath() {
+    File sdDir = null;
+    boolean sdCardExist = Environment.getExternalStorageState().equals(
+            android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
+    if (sdCardExist) {
+        sdDir = Environment.getExternalStorageDirectory();// 获取跟目录
+    }
+    return sdDir.toString();
+}
+
+/**
+ * 保存Bitmap到文件 并返回保存的文件
+ * 
+ * @param mBitmap
+ * @return
+ */
+public static File saveBitmapToFile(Bitmap mBitmap) {
+    File f = new File(getSDPath() + &quot;/mulu/&quot; + &quot;temp&quot; + &quot;.jpg&quot;);
+    FileOutputStream fOut = null;
+    try {
+        fOut = new FileOutputStream(f);
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+    try {
+        fOut.flush();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    try {
+        fOut.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return f;
+}
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/04/《用户体验的要素—以用户为中心的Web设计》读书笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《用户体验的要素—以用户为中心的Web设计》读书笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 赵晨璞 zchenpu@163.com
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme 修改自 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
