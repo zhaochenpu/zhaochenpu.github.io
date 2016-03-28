@@ -86,8 +86,136 @@ tags: Android
     }
 
     }
+## 2.Snackbar工具类 ##
+Snackbar是Android Support Design Library库支持的一个控件，个人觉得比Toast要好。
 
-## 2.Log统一管理类 ##
+本类可自定义Snackbar的消息文字和背景颜色，修改按钮颜色调用官方API的
+
+    snackbar.setActionTextColor(int color)
+
+我的项目中Action用的不多，大家可以根据自己的需求改写。
+
+本文参考自[http://blog.csdn.net/jywangkeep_/article/details/46405301](http://blog.csdn.net/jywangkeep_/article/details/46405301)
+和[http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html)
+
+
+    public class SnackbarUtil {
+
+    private static final int red = 0xfff44336;
+    private static final int green = 0xff4caf50;
+    private static final int blue = 0xff2195f3;
+    private static final int orange = 0xffffc107;
+    private static final int white = 0xFFFFFFFF;
+
+	/**
+     * 提示消息（蓝色背景，白色字体）
+     */
+    public static void showShortInfo(CoordinatorLayout coordinatorLayout,String message){
+        ShortSnackbar(coordinatorLayout,message,white,blue).show();
+    }
+
+    public static void showLongInfo(CoordinatorLayout coordinatorLayout,String message){
+        LongSnackbar(coordinatorLayout,message,white,blue).show();
+    }
+
+	/**
+     * 提示确认消息（绿色背景，白色字体）
+     */
+    public static void showShortConfirm(CoordinatorLayout coordinatorLayout,String message){
+        ShortSnackbar(coordinatorLayout,message,white,green).show();
+    }
+
+    public static void showLongConfirm(CoordinatorLayout coordinatorLayout,String message){
+        LongSnackbar(coordinatorLayout,message,white,green).show();
+    }
+	
+	/**
+     * 提示错误（黄色背景，白色字体）
+     */
+    public static void showShortWarning(CoordinatorLayout coordinatorLayout,String message){
+        ShortSnackbar(coordinatorLayout,message,white,orange).show();
+    }
+
+    public static void showLongWarning(CoordinatorLayout coordinatorLayout,String message){
+        LongSnackbar(coordinatorLayout,message,white,orange).show();
+    }
+
+	/**
+     * 提示严重错误（红色背景，白色字体）
+     */
+    public static void showShortAlert(CoordinatorLayout coordinatorLayout,String message){
+        ShortSnackbar(coordinatorLayout,message,white,red).show();
+    }
+
+    public static void showLongAlert(CoordinatorLayout coordinatorLayout,String message){
+        LongSnackbar(coordinatorLayout,message,white,red).show();
+    }
+
+
+	/**
+     * 常规提示（原生）
+     */
+    public static Snackbar ShortSnackbar(CoordinatorLayout coordinatorLayout,String message){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+        return snackbar;
+    }
+
+    public static Snackbar LongSnackbar(CoordinatorLayout coordinatorLayout,String message){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+        return snackbar;
+    }
+
+    public static Snackbar ShortSnackbar(CoordinatorLayout coordinatorLayout,String message,int messageColor,int backgroundColor){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+        setSnackbarColor(snackbar,messageColor,backgroundColor);
+        return snackbar;
+    }
+
+    public static Snackbar LongSnackbar(CoordinatorLayout coordinatorLayout,String message,int messageColor,int backgroundColor){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+        setSnackbarColor(snackbar,messageColor,backgroundColor);
+        return snackbar;
+    }
+	public static Snackbar ShortSnackbarAlert(CoordinatorLayout coordinatorLayout,String message){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+        setSnackbarColor(snackbar,Color.WHITE,orange);
+        return snackbar;
+    }
+
+    public static Snackbar LongSnackbarAlert(CoordinatorLayout coordinatorLayout,String message){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+        setSnackbarColor(snackbar,Color.WHITE,orange);
+        return snackbar;
+    }
+    
+    public static Snackbar ShortSnackbarWarning(CoordinatorLayout coordinatorLayout,String message){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+        setSnackbarColor(snackbar,Color.WHITE,red);
+        return snackbar;
+    }
+
+    public static Snackbar LongSnackbarWarning(CoordinatorLayout coordinatorLayout,String message){
+        Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+        setSnackbarColor(snackbar,Color.WHITE,red);
+        return snackbar;
+    }
+
+	/**
+     * 设置背景和字体颜色
+     */
+    public static void setSnackbarColor(Snackbar snackbar,int messageColor,int backgroundColor) {
+        View view = snackbar.getView();
+        if(view!=null){
+            view.setBackgroundColor(backgroundColor);
+            ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(messageColor);
+        }
+
+    }
+    }
+
+
+
+## 3.Log统一管理类 ##
 
     public class LogUtil {
         private LogUtil()
@@ -149,7 +277,7 @@ tags: Android
         }
     }
 
-## 3.屏幕相关信息类 ##
+## 4.屏幕相关信息类 ##
 
     public class ScreenUtils {  
     private ScreenUtils()  
@@ -242,7 +370,7 @@ tags: Android
     }    
 	} 
 
-## 4.px、dp、sp单位转换类 ##
+## 5.px、dp、sp单位转换类 ##
 
     public class DisplayUtil { 
     /**
@@ -278,7 +406,7 @@ tags: Android
     } 
     }
 
-## 5.SharedPreferences封装类 ##
+## 6.SharedPreferences封装类 ##
 
     public class SPUtils{
 	/**
@@ -439,7 +567,7 @@ tags: Android
 	}
     }
 
-## 6.获取设备及APP相关信息类 ##
+## 7.获取设备及APP相关信息类 ##
 
     public class DeviceUtil {
 	
@@ -523,7 +651,7 @@ tags: Android
     }
 	}
 
-## 7.判断网络连接状态及连接类型 ##
+## 8.判断网络连接状态及连接类型 ##
 
     public class NetWorkUtils {
 
@@ -581,7 +709,7 @@ tags: Android
     }
 	}
 
-## 8.打开或关闭软键盘 ## 
+## 9.打开或关闭软键盘 ## 
 
     public class KeyBoardUtils {  
     /** 
@@ -642,7 +770,7 @@ tags: Android
     }  
 	}  
 
-## 9.字符串处理和一些判断 ##
+## 10.字符串处理和一些判断 ##
 
     public class StringUtils {
 
@@ -753,7 +881,7 @@ tags: Android
 	}
 	}
 
-## 10.4.4版本沉浸式状态栏 ##
+## 11.安卓4.4版本沉浸式状态栏 ##
 主要代码来源于[SystemBarTint](https://github.com/jgilfelt/SystemBarTint)，增加了对MIUI和FLYME的适配
 
     public class SystemBarTintManager {
@@ -1462,7 +1590,7 @@ tags: Android
   		}
       }
 
-## 11.处理图片工具类 ##
+## 12.处理图片工具类 ##
 
     public class BitmapUtil {
 	

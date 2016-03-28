@@ -16,7 +16,7 @@
 <meta property="og:description" content="有两个非IT行业的哥们毕业一年了，现在决定辞职参加Android培训，毅然决然加入程序猿队伍。一句“三百六十行,行行出码农”说的我有点方……
 整理了一下平时用到的比较多的一些工具类，很多代码来源网络，有自己的修改。
 希望对大家有用，好好学习天天向上。">
-<meta property="og:updated_time" content="2016-03-08T09:48:26.493Z">
+<meta property="og:updated_time" content="2016-03-28T09:18:04.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发常用代码整理">
 <meta name="twitter:description" content="有两个非IT行业的哥们毕业一年了，现在决定辞职参加Android培训，毅然决然加入程序猿队伍。一句“三百六十行,行行出码农”说的我有点方……
@@ -300,7 +300,125 @@ public static void show(Context context, int message, int duration)
 }
 
 }
-</code></pre><h2 id="2-Log统一管理类"><a href="#2-Log统一管理类" class="headerlink" title="2.Log统一管理类"></a>2.Log统一管理类</h2><pre><code>public class LogUtil {
+</code></pre><h2 id="2-Snackbar工具类"><a href="#2-Snackbar工具类" class="headerlink" title="2.Snackbar工具类"></a>2.Snackbar工具类</h2><p>Snackbar是Android Support Design Library库支持的一个控件，个人觉得比Toast要好。</p>
+<p>本类可自定义Snackbar的消息文字和背景颜色，修改按钮颜色调用官方API的</p>
+<pre><code>snackbar.setActionTextColor(int color)
+</code></pre><p>我的项目中Action用的不多，大家可以根据自己的需求改写。</p>
+<p>本文参考自<a href="http://blog.csdn.net/jywangkeep_/article/details/46405301" target="_blank" rel="external">http://blog.csdn.net/jywangkeep_/article/details/46405301</a><br>和<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html</a></p>
+<pre><code>public class SnackbarUtil {
+
+private static final int red = 0xfff44336;
+private static final int green = 0xff4caf50;
+private static final int blue = 0xff2195f3;
+private static final int orange = 0xffffc107;
+private static final int white = 0xFFFFFFFF;
+
+/**
+ * 提示消息（蓝色背景，白色字体）
+ */
+public static void showShortInfo(CoordinatorLayout coordinatorLayout,String message){
+    ShortSnackbar(coordinatorLayout,message,white,blue).show();
+}
+
+public static void showLongInfo(CoordinatorLayout coordinatorLayout,String message){
+    LongSnackbar(coordinatorLayout,message,white,blue).show();
+}
+
+/**
+ * 提示确认消息（绿色背景，白色字体）
+ */
+public static void showShortConfirm(CoordinatorLayout coordinatorLayout,String message){
+    ShortSnackbar(coordinatorLayout,message,white,green).show();
+}
+
+public static void showLongConfirm(CoordinatorLayout coordinatorLayout,String message){
+    LongSnackbar(coordinatorLayout,message,white,green).show();
+}
+
+/**
+ * 提示错误（黄色背景，白色字体）
+ */
+public static void showShortWarning(CoordinatorLayout coordinatorLayout,String message){
+    ShortSnackbar(coordinatorLayout,message,white,orange).show();
+}
+
+public static void showLongWarning(CoordinatorLayout coordinatorLayout,String message){
+    LongSnackbar(coordinatorLayout,message,white,orange).show();
+}
+
+/**
+ * 提示严重错误（红色背景，白色字体）
+ */
+public static void showShortAlert(CoordinatorLayout coordinatorLayout,String message){
+    ShortSnackbar(coordinatorLayout,message,white,red).show();
+}
+
+public static void showLongAlert(CoordinatorLayout coordinatorLayout,String message){
+    LongSnackbar(coordinatorLayout,message,white,red).show();
+}
+
+
+/**
+ * 常规提示（原生）
+ */
+public static Snackbar ShortSnackbar(CoordinatorLayout coordinatorLayout,String message){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+    return snackbar;
+}
+
+public static Snackbar LongSnackbar(CoordinatorLayout coordinatorLayout,String message){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+    return snackbar;
+}
+
+public static Snackbar ShortSnackbar(CoordinatorLayout coordinatorLayout,String message,int messageColor,int backgroundColor){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+    setSnackbarColor(snackbar,messageColor,backgroundColor);
+    return snackbar;
+}
+
+public static Snackbar LongSnackbar(CoordinatorLayout coordinatorLayout,String message,int messageColor,int backgroundColor){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+    setSnackbarColor(snackbar,messageColor,backgroundColor);
+    return snackbar;
+}
+public static Snackbar ShortSnackbarAlert(CoordinatorLayout coordinatorLayout,String message){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+    setSnackbarColor(snackbar,Color.WHITE,orange);
+    return snackbar;
+}
+
+public static Snackbar LongSnackbarAlert(CoordinatorLayout coordinatorLayout,String message){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+    setSnackbarColor(snackbar,Color.WHITE,orange);
+    return snackbar;
+}
+
+public static Snackbar ShortSnackbarWarning(CoordinatorLayout coordinatorLayout,String message){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_SHORT);
+    setSnackbarColor(snackbar,Color.WHITE,red);
+    return snackbar;
+}
+
+public static Snackbar LongSnackbarWarning(CoordinatorLayout coordinatorLayout,String message){
+    Snackbar snackbar =Snackbar.make(coordinatorLayout,message, Snackbar.LENGTH_LONG);
+    setSnackbarColor(snackbar,Color.WHITE,red);
+    return snackbar;
+}
+
+/**
+ * 设置背景和字体颜色
+ */
+public static void setSnackbarColor(Snackbar snackbar,int messageColor,int backgroundColor) {
+    View view = snackbar.getView();
+    if(view!=null){
+        view.setBackgroundColor(backgroundColor);
+        ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(messageColor);
+    }
+
+}
+}
+</code></pre><h2 id="3-Log统一管理类"><a href="#3-Log统一管理类" class="headerlink" title="3.Log统一管理类"></a>3.Log统一管理类</h2><pre><code>public class LogUtil {
     private LogUtil()
     {
     /* cannot be instantiated */
@@ -359,7 +477,7 @@ public static void show(Context context, int message, int duration)
             Log.v(tag, msg);
     }
 }
-</code></pre><h2 id="3-屏幕相关信息类"><a href="#3-屏幕相关信息类" class="headerlink" title="3.屏幕相关信息类"></a>3.屏幕相关信息类</h2><pre><code>public class ScreenUtils {  
+</code></pre><h2 id="4-屏幕相关信息类"><a href="#4-屏幕相关信息类" class="headerlink" title="4.屏幕相关信息类"></a>4.屏幕相关信息类</h2><pre><code>public class ScreenUtils {  
 private ScreenUtils()  
 {  
     /* cannot be instantiated */  
@@ -449,7 +567,7 @@ public static Bitmap snapShotWithoutStatusBar(Activity activity)
     return bp;   
 }    
 } 
-</code></pre><h2 id="4-px、dp、sp单位转换类"><a href="#4-px、dp、sp单位转换类" class="headerlink" title="4.px、dp、sp单位转换类"></a>4.px、dp、sp单位转换类</h2><pre><code>public class DisplayUtil { 
+</code></pre><h2 id="5-px、dp、sp单位转换类"><a href="#5-px、dp、sp单位转换类" class="headerlink" title="5.px、dp、sp单位转换类"></a>5.px、dp、sp单位转换类</h2><pre><code>public class DisplayUtil { 
 /**
  * 将px值转换为dip或dp值，保证尺寸大小不变
  */ 
@@ -482,7 +600,7 @@ public static int sp2px(Context context, float spValue) {
     return (int) (spValue * fontScale + 0.5f); 
 } 
 }
-</code></pre><h2 id="5-SharedPreferences封装类"><a href="#5-SharedPreferences封装类" class="headerlink" title="5.SharedPreferences封装类"></a>5.SharedPreferences封装类</h2><pre><code>public class SPUtils{
+</code></pre><h2 id="6-SharedPreferences封装类"><a href="#6-SharedPreferences封装类" class="headerlink" title="6.SharedPreferences封装类"></a>6.SharedPreferences封装类</h2><pre><code>public class SPUtils{
 /**
  * 保存在手机里面的文件名
  */
@@ -640,7 +758,7 @@ private static class SharedPreferencesCompat
     }
 }
 }
-</code></pre><h2 id="6-获取设备及APP相关信息类"><a href="#6-获取设备及APP相关信息类" class="headerlink" title="6.获取设备及APP相关信息类"></a>6.获取设备及APP相关信息类</h2><pre><code>public class DeviceUtil {
+</code></pre><h2 id="7-获取设备及APP相关信息类"><a href="#7-获取设备及APP相关信息类" class="headerlink" title="7.获取设备及APP相关信息类"></a>7.获取设备及APP相关信息类</h2><pre><code>public class DeviceUtil {
 
 private static String android_id;
 
@@ -721,7 +839,7 @@ public static String getAppName(Context context)
     return null;  
 }
 }
-</code></pre><h2 id="7-判断网络连接状态及连接类型"><a href="#7-判断网络连接状态及连接类型" class="headerlink" title="7.判断网络连接状态及连接类型"></a>7.判断网络连接状态及连接类型</h2><pre><code>public class NetWorkUtils {
+</code></pre><h2 id="8-判断网络连接状态及连接类型"><a href="#8-判断网络连接状态及连接类型" class="headerlink" title="8.判断网络连接状态及连接类型"></a>8.判断网络连接状态及连接类型</h2><pre><code>public class NetWorkUtils {
 
 /**
  * 判断网络的链接状态
@@ -776,7 +894,7 @@ public static void openSetting(Activity activity)
     activity.startActivityForResult(intent, 0);  
 }
 }
-</code></pre><h2 id="8-打开或关闭软键盘"><a href="#8-打开或关闭软键盘" class="headerlink" title="8.打开或关闭软键盘"></a>8.打开或关闭软键盘</h2><pre><code>public class KeyBoardUtils {  
+</code></pre><h2 id="9-打开或关闭软键盘"><a href="#9-打开或关闭软键盘" class="headerlink" title="9.打开或关闭软键盘"></a>9.打开或关闭软键盘</h2><pre><code>public class KeyBoardUtils {  
 /** 
  * 打卡软键盘 
  *  
@@ -834,7 +952,7 @@ public static boolean KeyBoard(EditText edittext) {
     return bool;  
 }  
 }  
-</code></pre><h2 id="9-字符串处理和一些判断"><a href="#9-字符串处理和一些判断" class="headerlink" title="9.字符串处理和一些判断"></a>9.字符串处理和一些判断</h2><pre><code>public class StringUtils {
+</code></pre><h2 id="10-字符串处理和一些判断"><a href="#10-字符串处理和一些判断" class="headerlink" title="10.字符串处理和一些判断"></a>10.字符串处理和一些判断</h2><pre><code>public class StringUtils {
 
 //判断是否有中文字符
 static String regEx = &quot;[\u4e00-\u9fa5]&quot;;
@@ -942,7 +1060,7 @@ public static boolean checkIdNum(String idNum)
     return m.find();
 }
 }
-</code></pre><h2 id="10-4-4版本沉浸式状态栏"><a href="#10-4-4版本沉浸式状态栏" class="headerlink" title="10.4.4版本沉浸式状态栏"></a>10.4.4版本沉浸式状态栏</h2><p>主要代码来源于<a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">SystemBarTint</a>，增加了对MIUI和FLYME的适配</p>
+</code></pre><h2 id="11-安卓4-4版本沉浸式状态栏"><a href="#11-安卓4-4版本沉浸式状态栏" class="headerlink" title="11.安卓4.4版本沉浸式状态栏"></a>11.安卓4.4版本沉浸式状态栏</h2><p>主要代码来源于<a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">SystemBarTint</a>，增加了对MIUI和FLYME的适配</p>
 <pre><code>public class SystemBarTintManager {
 
 static {
@@ -1648,7 +1766,7 @@ public static void transparencyBar(Window window){
           return result;
       }
   }
-</code></pre><h2 id="11-处理图片工具类"><a href="#11-处理图片工具类" class="headerlink" title="11.处理图片工具类"></a>11.处理图片工具类</h2><pre><code>public class BitmapUtil {
+</code></pre><h2 id="12-处理图片工具类"><a href="#12-处理图片工具类" class="headerlink" title="12.处理图片工具类"></a>12.处理图片工具类</h2><pre><code>public class BitmapUtil {
 
 private static final int STROKE_WIDTH = 4;
 
