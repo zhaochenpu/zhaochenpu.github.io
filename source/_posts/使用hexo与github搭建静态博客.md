@@ -79,7 +79,7 @@ hexo有很多主题[可以从这里挑个](http://www.zhihu.com/question/2442233
 在命令行窗口中执行:
 
     hexo generate
-这个命令会在站点目录下上传public文件夹，其中包含网站的html、css等文件。
+这个命令会在站点目录下生成public文件夹，其中包含网站的html、css等文件。
 
 其他人大多是使用git上传，我采用的是[github客户端](https://desktop.github.com/)上传，其实都差不多。使用git的hexo可以参考如下教程[Hexo搭建Github静态博客](http://www.cnblogs.com/zhcncn/p/4097881.html)。
 
