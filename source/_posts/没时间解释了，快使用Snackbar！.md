@@ -1,4 +1,4 @@
-title: 没时间解释了，快使用Snackbar!
+﻿title: 没时间解释了，快使用Snackbar!
 date: 2016-05-04
 tags: Android
 ---
@@ -11,15 +11,15 @@ Snackbar是Android Support Design Library库中的一个控件，可以在屏幕
 
 Snackbar是显示在所有屏幕其它元素之上(屏幕最顶层)，同一时间只能显示一个snackbar。
 
-Snackbar的基本使用很简单，与Toast类似。示例如下：
+Snackbar的基本使用很简单，与Toast类似。：
 
     Snackbar.make(view, message_text, duration)
        .setAction(action_text, click_listener)
        .show();
 
-make()是生成Snackbar。Snackbar需要一个控件容器view用来容纳，官方推荐使用CoordinatorLayout来确保Snackbar和其他组件的交互，比如滑动取消Snackbar、Snackbar出现时FloatingActionButton上移。显示时间duration有三种类型LENGTH_SHORT、LENGTH_LONG和LENGTH_INDEFINITE。
+make()方法是生成Snackbar的。Snackbar需要一个控件容器view用来容纳，官方推荐使用CoordinatorLayout来确保Snackbar和其他组件的交互，比如滑动取消Snackbar、Snackbar出现时FloatingActionButton上移。显示时间duration有三种类型LENGTH_SHORT、LENGTH_LONG和LENGTH_INDEFINITE。
 
-setAction()可设置Snackbar右侧按钮，增加进行交互事件。如果不使用setAction()则只显示左侧message。
+setAction()方法可设置Snackbar右侧按钮，增加进行交互事件。如果不使用setAction()则只显示左侧message。
 
     Snackbar.make(coordinatorLayout,"这是massage", Snackbar.LENGTH_LONG).setAction("这是action", new View.OnClickListener() {
     	@Override
@@ -31,7 +31,7 @@ setAction()可设置Snackbar右侧按钮，增加进行交互事件。如果不�
 下面这张图演示了上面代码所实现的效果：Snackbar长显示、点击Action弹出toast提示以及Snackbar在CoordinatorLayout中滑动取消。
 ![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/1.gif)
 
-如果你想在Snackbar的显示时或消失时做些什么，你可以调用Snackbar的setCallback()方法。
+如果你想在Snackbar的显示时或消失时做些什么，可以调用Snackbar的setCallback()方法。
 
 ## 2.多彩Snackbar ##
 
@@ -75,7 +75,7 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
             style="?attr/borderlessButtonStyle"/>
     </merge>
 
-由命名可知snackbar_text为名的TextView是Snackbar左侧的message。
+由命名可知，以snackbar_text为名的TextView就是Snackbar左侧的message。
 
 好了，我们开始修改Snackbar的背景颜色和message字体颜色吧。
 
@@ -107,7 +107,7 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
 
 上面这段是谷歌 [Material Design设计规范](http://wiki.jikexueyuan.com/project/material-design/components/snackbars-and-toasts.html "Material Design中文版")中的话。
 
-但是我就是想在Snackbar中加图标增加趣味性，引起用户注意怎么办？我就是想在Snackbar中放两个按钮进行可选非必要操作怎么办？我就是想整幺蛾子。
+但是我就是想在Snackbar中加图标增加趣味性，引起用户注意怎么办？我就是想在Snackbar中放两个按钮进行可选非必要操作怎么办？我就是想整幺蛾子。︿(￣︶￣)︿
 
 设计规范中的说法是有道理的，因为官方认为“Snackbar是一种针对操作的轻量级反馈机制”，做的麻烦了影响视觉感受。但是对于上述任性的开发者（或者是接了奇葩需求的苦逼开发者）我们也有自己的解决方法。
 
@@ -157,6 +157,8 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
 ![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/4.gif)
 
 ## 4.SnackbarUtil ##
+
+我将我常用的Snackbar相关设置封装成了一个类，大家可以根据自己的需求使用。
 
     /**
 	 * Created by 赵晨璞 on 2016/5/1.
