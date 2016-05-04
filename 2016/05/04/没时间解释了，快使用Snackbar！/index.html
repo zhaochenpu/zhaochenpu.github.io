@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>没时间解释了，快使用Snackbar! | no name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="没时间解释了，快使用Snackbar!">
+<meta property="og:url" content="http://yoursite.com/2016/05/04/没时间解释了，快使用Snackbar！/index.html">
+<meta property="og:site_name" content="no name">
+<meta property="og:description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/1.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/2.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/3.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/4.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/2.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/5.gif">
+<meta property="og:updated_time" content="2016-05-04T12:59:20.945Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="没时间解释了，快使用Snackbar!">
+<meta name="twitter:description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。">
+  
+    <link rel="alternative" href="/atom.xml" title="no name" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">赵晨璞</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/读书-公开课-笔记/" style="font-size: 20px;">读书&公开课 笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.androiddevtools.cn/">AndroidDevTools</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jcodecraeer.com/plus/list.php?tid=31">泡在网上的日子</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://linetoanywhere.github.io/">豪哥的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Android程序猿，单身狗。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">赵晨璞</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">赵晨璞</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-没时间解释了，快使用Snackbar！" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/04/没时间解释了，快使用Snackbar！/" class="article-date">
+  	<time datetime="2016-05-03T16:00:00.000Z" itemprop="datePublished">2016-05-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      没时间解释了，快使用Snackbar!
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。<a id="more"></a></p>
+<p>本文是在<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html" target="_blank" rel="external">《Design Support Library第三部分：Snackbar样式》</a>和<a href="http://blog.csdn.net/jywangkeep_/article/details/46405301" target="_blank" rel="external">《Snackbar使用及其注意事项》</a>两篇文章的启发下而来，首先对两位作者表示感谢。</p>
+<h2 id="1-Snackbar基本介绍"><a href="#1-Snackbar基本介绍" class="headerlink" title="1.Snackbar基本介绍"></a>1.Snackbar基本介绍</h2><p>使用Snackbar要导入com.android.support:design库。</p>
+<p>Snackbar是显示在所有屏幕其它元素之上(屏幕最顶层)，同一时间只能显示一个snackbar。</p>
+<p>Snackbar的基本使用很简单，与Toast类似。示例如下：</p>
+<pre><code>Snackbar.make(view, message_text, duration)
+   .setAction(action_text, click_listener)
+   .show();
+</code></pre><p>make()是生成Snackbar。Snackbar需要一个控件容器view用来容纳，官方推荐使用CoordinatorLayout来确保Snackbar和其他组件的交互，比如滑动取消Snackbar、Snackbar出现时FloatingActionButton上移。显示时间duration有三种类型LENGTH_SHORT、LENGTH_LONG和LENGTH_INDEFINITE。</p>
+<p>setAction()可设置Snackbar右侧按钮，增加进行交互事件。如果不使用setAction()则只显示左侧message。</p>
+<pre><code>Snackbar.make(coordinatorLayout,&quot;这是massage&quot;, Snackbar.LENGTH_LONG).setAction(&quot;这是action&quot;, new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(MainActivity.this,&quot;你点击了action&quot;,Toast.LENGTH_SHORT).show();
+     }
+ }).show();
+</code></pre><p>下面这张图演示了上面代码所实现的效果：Snackbar长显示、点击Action弹出toast提示以及Snackbar在CoordinatorLayout中滑动取消。<br><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/1.gif" alt=""></p>
+<p>如果你想在Snackbar的显示时或消失时做些什么，你可以调用Snackbar的setCallback()方法。</p>
+<h2 id="2-多彩Snackbar"><a href="#2-多彩Snackbar" class="headerlink" title="2.多彩Snackbar"></a>2.多彩Snackbar</h2><p>Snackbar和Toast的默认样式都很单一，但是有时我们希望把不同类型信息区别显示，从而使用户更容易注意到提示信息。所以使Snackbar变色是一个好主意。</p>
+<p>Snackbar的官方API只提供了setActionTextColor()这个方法修改Action的文字颜色，这怎么办？查源码吧，哪里不会点哪里。</p>
+<p>在源码中我们看到Snackbar中定义了一个继承自LinearLayout的内部类SnackbarLayout，Snackbar的样子就是由这个SnackbarLayout实现的。</p>
+<p>SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，打开后看到下面这段代码（我把padding、margin的具体数值也打了出来）：</p>
+<pre><code>&lt;merge xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+&lt;TextView
+        android:id=&quot;@+id/snackbar_text&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_weight=&quot;1&quot;
+        android:paddingTop=&quot;14dp&quot;
+        android:paddingBottom=&quot;14dp&quot;
+        android:paddingLeft=&quot;12dp&quot;
+        android:paddingRight=&quot;12dp&quot;
+        android:textAppearance=&quot;@style/TextAppearance.Design.Snackbar.Message&quot;
+        android:maxLines=&quot;2&quot;
+        android:layout_gravity=&quot;center_vertical|left|start&quot;
+        android:ellipsize=&quot;end&quot;
+        android:textAlignment=&quot;viewStart&quot;/&gt;
+
+&lt;Button
+        android:id=&quot;@+id/snackbar_action&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_marginLeft=&quot;0dp&quot;
+        android:layout_marginStart=&quot;0dp&quot;
+        android:layout_gravity=&quot;center_vertical|right|end&quot;
+        android:paddingTop=&quot;14dp&quot;
+        android:paddingBottom=&quot;14dp&quot;
+        android:paddingLeft=&quot;12dp&quot;
+        android:paddingRight=&quot;12dp&quot;
+        android:visibility=&quot;gone&quot;
+        android:textColor=&quot;?attr/colorAccent&quot;
+        style=&quot;?attr/borderlessButtonStyle&quot;/&gt;
+&lt;/merge&gt;
+</code></pre><p>由命名可知snackbar_text为名的TextView是Snackbar左侧的message。</p>
+<p>好了，我们开始修改Snackbar的背景颜色和message字体颜色吧。</p>
+<pre><code>public static void setSnackbarColor(Snackbar snackbar, int messageColor, int backgroundColor) {
+    View view = snackbar.getView();//获取Snackbar的view
+    if(view!=null){
+        view.setBackgroundColor(backgroundColor);//修改view的背景色
+        ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(messageColor);//获取Snackbar的message控件，修改字体颜色
+    }
+}
+</code></pre><p>很简单，代码没有几行。</p>
+<p>本文最后提供的Snackbar封装类代码中定义了4种不同类型的信息：Info(妹子向你发来一条消息)、Confirm(妹子已收到你发出的消息)、Warning(妹子删除了你发出的消息)、Alert(妹子已将你拉黑)，分别用蓝色、绿色、橙色、红色来表示。</p>
+<p><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/2.gif" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/3.gif" alt=""></p>
+<h2 id="3-在Snackbar中增加图标"><a href="#3-在Snackbar中增加图标" class="headerlink" title="3.在Snackbar中增加图标"></a>3.在Snackbar中增加图标</h2><blockquote>
+<p><strong>短文本</strong></p>
+<p>通常 Snackbar 的高度应该仅仅用于容纳所有的文本，而文本应该与执行的操作相关。Snackbar 中不能包含图标，操作只能以文本的形式存在。</p>
+<p><strong>最多0-1个操作，不包含取消按钮</strong></p>
+<p>当一个动作发生的时候，应当符合提示框和可用性规则。当有2个或者2个以上的操作出现时，应该使用提示框而不是 Snackbar，即使其中的一个是取消操作。如果 Snackbar 中提示的操作重要到需要打断屏幕上正在进行的操作，那么理当使用提示框而非 Snackbar。</p>
+</blockquote>
+<p>上面这段是谷歌 <a href="http://wiki.jikexueyuan.com/project/material-design/components/snackbars-and-toasts.html" title="Material Design中文版" target="_blank" rel="external">Material Design设计规范</a>中的话。</p>
+<p>但是我就是想在Snackbar中加图标增加趣味性，引起用户注意怎么办？我就是想在Snackbar中放两个按钮进行可选非必要操作怎么办？我就是想整幺蛾子。</p>
+<p>设计规范中的说法是有道理的，因为官方认为“Snackbar是一种针对操作的轻量级反馈机制”，做的麻烦了影响视觉感受。但是对于上述任性的开发者（或者是接了奇葩需求的苦逼开发者）我们也有自己的解决方法。</p>
+<p>前面我们提到过Snackbar的view是由SnackbarLayout实现的，而SnackbarLayout是继承自LinearLayout，那么我们新建一个布局添加进去不就行了么。</p>
+<pre><code>public static void SnackbarAddView(Snackbar snackbar,int layoutId,int index) {
+    View snackbarview = snackbar.getView();//获取snackbar的View(其实就是SnackbarLayout)
+
+    Snackbar.SnackbarLayout snackbarLayout=(Snackbar.SnackbarLayout)snackbarview;//将获取的View转换成SnackbarLayout
+
+    View add_view = LayoutInflater.from(snackbarview.getContext()).inflate(layoutId,null);//加载布局文件新建View
+
+    LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);//设置新建布局参数
+
+    p.gravity= Gravity.CENTER_VERTICAL;//设置新建布局在Snackbar内垂直居中显示
+
+    snackbarLayout.addView(add_view,index,p);//将新建布局添加进snackbarLayout相应位置
+}
+</code></pre><p>上面的代码中，如果我们不设置向Snackbar中添加的布局文件的布局参数，新布局会显示在Snackbar内的上方。使用上述任性方法的时候要注意新加布局的大小和Snackbar内文字长度，Snackbar过大或过于花哨了可不好看。</p>
+<p>下面是使用示例。我们先新建一个布局，暂时命名为snackbar_addview.xml,简单的放进了一个ImageView，图片就是android默认图标。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:layout_width=&quot;wrap_content&quot;
+android:layout_height=&quot;wrap_content&quot;
+android:layout_gravity=&quot;center_vertical&quot;
+&gt;
+&lt;ImageView
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_gravity=&quot;center_vertical&quot;
+    android:src=&quot;@mipmap/ic_launcher&quot;/&gt;
+&lt;/LinearLayout&gt;
+</code></pre><p>然后在activity中写下snackbar的设置：</p>
+<pre><code>Snackbar snackbar= Snackbar.make(coordinatorLayout,&quot;这是massage&quot;, Snackbar.LENGTH_LONG);
+
+SnackbarUtil.setSnackbarColor(snackbar,SnackbarUtil.blue);
+
+SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview,0);
+
+ snackbar.show();
+</code></pre><p><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/4.gif" alt=""></p>
+<h2 id="4-SnackbarUtil"><a href="#4-SnackbarUtil" class="headerlink" title="4.SnackbarUtil"></a>4.SnackbarUtil</h2><pre><code>/**
+ * Created by 赵晨璞 on 2016/5/1.
+ */
+public class SnackbarUtil {
+
+public static final   int Info = 1;
+public static final  int Confirm = 2;
+public static final  int Warning = 3;
+public static final  int Alert = 4;
+
+
+public static  int red = 0xfff44336;
+public static  int green = 0xff4caf50;
+public static  int blue = 0xff2195f3;
+public static  int orange = 0xffffc107;
+
+/**
+ * 短显示Snackbar，自定义颜色
+ * @param view
+ * @param message
+ * @param messageColor
+ * @param backgroundColor
+ * @return
+ */
+public static Snackbar ShortSnackbar(View view, String message, int messageColor, int backgroundColor){
+    Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT);
+    setSnackbarColor(snackbar,messageColor,backgroundColor);
+    return snackbar;
+}
+
+/**
+ * 长显示Snackbar，自定义颜色
+ * @param view
+ * @param message
+ * @param messageColor
+ * @param backgroundColor
+ * @return
+ */
+public static Snackbar LongSnackbar(View view, String message, int messageColor, int backgroundColor){
+    Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_LONG);
+    setSnackbarColor(snackbar,messageColor,backgroundColor);
+    return snackbar;
+}
+
+/**
+ * 自定义时常显示Snackbar，自定义颜色
+ * @param view
+ * @param message
+ * @param messageColor
+ * @param backgroundColor
+ * @return
+ */
+public static Snackbar IndefiniteSnackbar(View view, String message,int duration,int messageColor, int backgroundColor){
+    Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_INDEFINITE).setDuration(duration);
+    setSnackbarColor(snackbar,messageColor,backgroundColor);
+    return snackbar;
+}
+
+/**
+ * 短显示Snackbar，可选预设类型
+ * @param view
+ * @param message
+ * @param type
+ * @return
+ */
+public static Snackbar ShortSnackbar(View view, String message, int type){
+    Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_SHORT);
+    switchType(snackbar,type);
+    return snackbar;
+}
+
+/**
+ * 长显示Snackbar，可选预设类型
+ * @param view
+ * @param message
+ * @param type
+ * @return
+ */
+public static Snackbar LongSnackbar(View view, String message,int type){
+    Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_LONG);
+    switchType(snackbar,type);
+    return snackbar;
+}
+
+/**
+ * 自定义时常显示Snackbar，可选预设类型
+ * @param view
+ * @param message
+ * @param type
+ * @return
+ */
+public static Snackbar IndefiniteSnackbar(View view, String message,int duration,int type){
+    Snackbar snackbar = Snackbar.make(view,message, Snackbar.LENGTH_INDEFINITE).setDuration(duration);
+    switchType(snackbar,type);
+    return snackbar;
+}
+
+//选择预设类型
+private static void switchType(Snackbar snackbar,int type){
+    switch (type){
+        case Info:
+            setSnackbarColor(snackbar,blue);
+            break;
+        case Confirm:
+            setSnackbarColor(snackbar,green);
+            break;
+        case Warning:
+            setSnackbarColor(snackbar,orange);
+            break;
+        case Alert:
+            setSnackbarColor(snackbar,Color.YELLOW,red);
+            break;
+    }
+}
+
+/**
+ * 设置Snackbar背景颜色
+ * @param snackbar
+ * @param backgroundColor
+ */
+public static void setSnackbarColor(Snackbar snackbar, int backgroundColor) {
+    View view = snackbar.getView();
+    if(view!=null){
+        view.setBackgroundColor(backgroundColor);
+    }
+}
+
+/**
+ * 设置Snackbar文字和背景颜色
+ * @param snackbar
+ * @param messageColor
+ * @param backgroundColor
+ */
+public static void setSnackbarColor(Snackbar snackbar, int messageColor, int backgroundColor) {
+    View view = snackbar.getView();
+    if(view!=null){
+        view.setBackgroundColor(backgroundColor);
+        ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(messageColor);
+    }
+}
+
+/**
+ * 向Snackbar中添加view
+ * @param snackbar
+ * @param layoutId
+ * @param index 新加布局在Snackbar中的位置
+ */
+public static void SnackbarAddView( Snackbar snackbar,int layoutId,int index) {
+    View snackbarview = snackbar.getView();
+    Snackbar.SnackbarLayout snackbarLayout=(Snackbar.SnackbarLayout)snackbarview;
+
+    View add_view = LayoutInflater.from(snackbarview.getContext()).inflate(layoutId,null);
+
+    LinearLayout.LayoutParams p = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+    p.gravity= Gravity.CENTER_VERTICAL;
+
+    snackbarLayout.addView(add_view,index,p);
+}
+
+}
+</code></pre><p>简单的使用示例：</p>
+<pre><code>SnackbarUtil.ShortSnackbar(coordinator,&quot;妹子向你发来一条消息&quot;,SnackbarUtil.Info).show();
+</code></pre><p><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/2.gif" alt=""></p>
+<p>整出幺蛾子的使用示例：</p>
+<pre><code>Snackbar snackbar= SnackbarUtil.ShortSnackbar(coordinator,&quot;妹子删了你发出的消息&quot;,SnackbarUtil.Warning).setActionTextColor(Color.RED).setAction(&quot;再次发送&quot;, new View.OnClickListener() {
+   @Override
+    public void onClick(View v) {
+       SnackbarUtil.LongSnackbar(coordinator,&quot;妹子已将你拉黑&quot;,SnackbarUtil.Alert).setActionTextColor(Color.WHITE).show();
+   }
+});
+
+SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview,0);
+
+SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview2,2);
+
+ snackbar.show();
+</code></pre><p>这个示例中调用了两次SnackbarAddView方法向Snackbar添加了两个不同的自定义布局，效果如下（不建议大家这么玩 _(:з」∠)＿ ）：<br><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/5.gif" alt=""></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/08/Android开发常用代码/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android开发常用代码整理</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 赵晨璞 zchenpu@163.com
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme 修改自 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
