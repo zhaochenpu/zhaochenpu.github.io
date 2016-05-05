@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/4.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/2.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/5.gif">
-<meta property="og:updated_time" content="2016-05-04T12:59:20.945Z">
+<meta property="og:updated_time" content="2016-05-05T01:27:25.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="没时间解释了，快使用Snackbar!">
 <meta name="twitter:description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。">
@@ -226,12 +226,12 @@
 <p>本文是在<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html" target="_blank" rel="external">《Design Support Library第三部分：Snackbar样式》</a>和<a href="http://blog.csdn.net/jywangkeep_/article/details/46405301" target="_blank" rel="external">《Snackbar使用及其注意事项》</a>两篇文章的启发下而来，首先对两位作者表示感谢。</p>
 <h2 id="1-Snackbar基本介绍"><a href="#1-Snackbar基本介绍" class="headerlink" title="1.Snackbar基本介绍"></a>1.Snackbar基本介绍</h2><p>使用Snackbar要导入com.android.support:design库。</p>
 <p>Snackbar是显示在所有屏幕其它元素之上(屏幕最顶层)，同一时间只能显示一个snackbar。</p>
-<p>Snackbar的基本使用很简单，与Toast类似。示例如下：</p>
+<p>Snackbar的基本使用很简单，与Toast类似。：</p>
 <pre><code>Snackbar.make(view, message_text, duration)
    .setAction(action_text, click_listener)
    .show();
-</code></pre><p>make()是生成Snackbar。Snackbar需要一个控件容器view用来容纳，官方推荐使用CoordinatorLayout来确保Snackbar和其他组件的交互，比如滑动取消Snackbar、Snackbar出现时FloatingActionButton上移。显示时间duration有三种类型LENGTH_SHORT、LENGTH_LONG和LENGTH_INDEFINITE。</p>
-<p>setAction()可设置Snackbar右侧按钮，增加进行交互事件。如果不使用setAction()则只显示左侧message。</p>
+</code></pre><p>make()方法是生成Snackbar的。Snackbar需要一个控件容器view用来容纳，官方推荐使用CoordinatorLayout来确保Snackbar和其他组件的交互，比如滑动取消Snackbar、Snackbar出现时FloatingActionButton上移。显示时间duration有三种类型LENGTH_SHORT、LENGTH_LONG和LENGTH_INDEFINITE。</p>
+<p>setAction()方法可设置Snackbar右侧按钮，增加进行交互事件。如果不使用setAction()则只显示左侧message。</p>
 <pre><code>Snackbar.make(coordinatorLayout,&quot;这是massage&quot;, Snackbar.LENGTH_LONG).setAction(&quot;这是action&quot;, new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -239,7 +239,7 @@
      }
  }).show();
 </code></pre><p>下面这张图演示了上面代码所实现的效果：Snackbar长显示、点击Action弹出toast提示以及Snackbar在CoordinatorLayout中滑动取消。<br><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/1.gif" alt=""></p>
-<p>如果你想在Snackbar的显示时或消失时做些什么，你可以调用Snackbar的setCallback()方法。</p>
+<p>如果你想在Snackbar的显示时或消失时做些什么，可以调用Snackbar的setCallback()方法。</p>
 <h2 id="2-多彩Snackbar"><a href="#2-多彩Snackbar" class="headerlink" title="2.多彩Snackbar"></a>2.多彩Snackbar</h2><p>Snackbar和Toast的默认样式都很单一，但是有时我们希望把不同类型信息区别显示，从而使用户更容易注意到提示信息。所以使Snackbar变色是一个好主意。</p>
 <p>Snackbar的官方API只提供了setActionTextColor()这个方法修改Action的文字颜色，这怎么办？查源码吧，哪里不会点哪里。</p>
 <p>在源码中我们看到Snackbar中定义了一个继承自LinearLayout的内部类SnackbarLayout，Snackbar的样子就是由这个SnackbarLayout实现的。</p>
@@ -275,7 +275,7 @@
         android:textColor=&quot;?attr/colorAccent&quot;
         style=&quot;?attr/borderlessButtonStyle&quot;/&gt;
 &lt;/merge&gt;
-</code></pre><p>由命名可知snackbar_text为名的TextView是Snackbar左侧的message。</p>
+</code></pre><p>由命名可知，以snackbar_text为名的TextView就是Snackbar左侧的message。</p>
 <p>好了，我们开始修改Snackbar的背景颜色和message字体颜色吧。</p>
 <pre><code>public static void setSnackbarColor(Snackbar snackbar, int messageColor, int backgroundColor) {
     View view = snackbar.getView();//获取Snackbar的view
@@ -295,7 +295,7 @@
 <p>当一个动作发生的时候，应当符合提示框和可用性规则。当有2个或者2个以上的操作出现时，应该使用提示框而不是 Snackbar，即使其中的一个是取消操作。如果 Snackbar 中提示的操作重要到需要打断屏幕上正在进行的操作，那么理当使用提示框而非 Snackbar。</p>
 </blockquote>
 <p>上面这段是谷歌 <a href="http://wiki.jikexueyuan.com/project/material-design/components/snackbars-and-toasts.html" title="Material Design中文版" target="_blank" rel="external">Material Design设计规范</a>中的话。</p>
-<p>但是我就是想在Snackbar中加图标增加趣味性，引起用户注意怎么办？我就是想在Snackbar中放两个按钮进行可选非必要操作怎么办？我就是想整幺蛾子。</p>
+<p>但是我就是想在Snackbar中加图标增加趣味性，引起用户注意怎么办？我就是想在Snackbar中放两个按钮进行可选非必要操作怎么办？我就是想整幺蛾子。︿(￣︶￣)︿</p>
 <p>设计规范中的说法是有道理的，因为官方认为“Snackbar是一种针对操作的轻量级反馈机制”，做的麻烦了影响视觉感受。但是对于上述任性的开发者（或者是接了奇葩需求的苦逼开发者）我们也有自己的解决方法。</p>
 <p>前面我们提到过Snackbar的view是由SnackbarLayout实现的，而SnackbarLayout是继承自LinearLayout，那么我们新建一个布局添加进去不就行了么。</p>
 <pre><code>public static void SnackbarAddView(Snackbar snackbar,int layoutId,int index) {
@@ -334,7 +334,8 @@ SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview,0);
 
  snackbar.show();
 </code></pre><p><img src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/4.gif" alt=""></p>
-<h2 id="4-SnackbarUtil"><a href="#4-SnackbarUtil" class="headerlink" title="4.SnackbarUtil"></a>4.SnackbarUtil</h2><pre><code>/**
+<h2 id="4-SnackbarUtil"><a href="#4-SnackbarUtil" class="headerlink" title="4.SnackbarUtil"></a>4.SnackbarUtil</h2><p>我将我常用的Snackbar相关设置封装成了一个类，大家可以根据自己的需求使用。</p>
+<pre><code>/**
  * Created by 赵晨璞 on 2016/5/1.
  */
 public class SnackbarUtil {
