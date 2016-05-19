@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>看，这个工具栏能伸缩折叠!——Android CollapsingToolbarLayout使用介绍 | no name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我非常喜欢Material Design里折叠工具栏的效果，bilibili Android客户端视频详情页就是采用的这种设计。这篇文章的第二部分我们就通过简单的模仿bilibili视频详情页的实现来了解下CollapsingToolbarLayout的使用。文章的第三部分介绍了CollapsingToolbarLayout与TabLayout的组合使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="看，这个工具栏能伸缩折叠!——Android CollapsingToolbarLayout使用介绍">
+<meta property="og:url" content="http://yoursite.com/2016/05/14/CollapsingToolbarLayout实用/index.html">
+<meta property="og:site_name" content="no name">
+<meta property="og:description" content="我非常喜欢Material Design里折叠工具栏的效果，bilibili Android客户端视频详情页就是采用的这种设计。这篇文章的第二部分我们就通过简单的模仿bilibili视频详情页的实现来了解下CollapsingToolbarLayout的使用。文章的第三部分介绍了CollapsingToolbarLayout与TabLayout的组合使用。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-30f5bb60fee93ae4.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-61defc66bb3e9fb8.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-50b668639326f465.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-a613e0814823a935.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-02aad67d7a942ea6.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-a68d0e424c1ab044.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2016-05-19T03:40:52.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="看，这个工具栏能伸缩折叠!——Android CollapsingToolbarLayout使用介绍">
+<meta name="twitter:description" content="我非常喜欢Material Design里折叠工具栏的效果，bilibili Android客户端视频详情页就是采用的这种设计。这篇文章的第二部分我们就通过简单的模仿bilibili视频详情页的实现来了解下CollapsingToolbarLayout的使用。文章的第三部分介绍了CollapsingToolbarLayout与TabLayout的组合使用。">
+  
+    <link rel="alternative" href="/atom.xml" title="no name" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">赵晨璞</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/读书-公开课-笔记/" style="font-size: 15px;">读书&公开课 笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.androiddevtools.cn/">AndroidDevTools</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jcodecraeer.com/plus/list.php?tid=31">泡在网上的日子</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://linetoanywhere.github.io/">豪哥的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Android程序猿，单身狗。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">赵晨璞</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">赵晨璞</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-CollapsingToolbarLayout实用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/14/CollapsingToolbarLayout实用/" class="article-date">
+  	<time datetime="2016-05-13T16:00:00.000Z" itemprop="datePublished">2016-05-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      看，这个工具栏能伸缩折叠!——Android CollapsingToolbarLayout使用介绍
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我非常喜欢Material Design里折叠工具栏的效果，bilibili Android客户端视频详情页就是采用的这种设计。这篇文章的第二部分我们就通过简单的模仿bilibili视频详情页的实现来了解下CollapsingToolbarLayout的使用。文章的第三部分介绍了CollapsingToolbarLayout与TabLayout的组合使用。<br><a id="more"></a></p>
+<p>有基础的朋友可以直接跳过第一部分。</p>
+<h2 id="一、相关基础属性介绍"><a href="#一、相关基础属性介绍" class="headerlink" title="一、相关基础属性介绍"></a>一、相关基础属性介绍</h2><p>Android studio中有一个Activity模板叫ScrollingActivity，它实现的就是简单的可折叠工具栏，我们将此模板添加到项目中。<br><img src="http://upload-images.jianshu.io/upload_images/828721-30f5bb60fee93ae4.gif?imageMogr2/auto-orient/strip" alt="ScrollingActivity.gif"></p>
+<p>ScrollingActivity的布局代码如下</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:fitsSystemWindows=&quot;true&quot;&gt;
+
+&lt;android.support.design.widget.AppBarLayout
+    android:id=&quot;@+id/app_bar&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;@dimen/app_bar_height&quot;
+    android:fitsSystemWindows=&quot;true&quot;
+    android:theme=&quot;@style/AppTheme.AppBarOverlay&quot;&gt;
+
+    &lt;android.support.design.widget.CollapsingToolbarLayout
+        android:id=&quot;@+id/toolbar_layout&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:fitsSystemWindows=&quot;true&quot;
+        app:contentScrim=&quot;?attr/colorPrimary&quot;
+        app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id=&quot;@+id/toolbar&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;?attr/actionBarSize&quot;
+            app:layout_collapseMode=&quot;pin&quot;
+            app:popupTheme=&quot;@style/AppTheme.PopupOverlay&quot; /&gt;
+
+    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+&lt;/android.support.design.widget.AppBarLayout&gt;
+&lt;android.support.v4.widget.NestedScrollView                    
+        android:layout_width=&quot;match_parent&quot;        
+        android:layout_height=&quot;match_parent&quot;              
+        app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;
+        &gt;    
+    &lt;TextView        
+            android:layout_width=&quot;wrap_content&quot;        
+            android:layout_height=&quot;wrap_content&quot;        
+            android:layout_margin=&quot;@dimen/text_margin&quot;         
+            android:text=&quot;@string/large_text&quot; /&gt;     
+&lt;/android.support.v4.widget.NestedScrollView&gt;
+
+&lt;android.support.design.widget.FloatingActionButton
+    android:id=&quot;@+id/fab&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_margin=&quot;@dimen/fab_margin&quot;
+    android:src=&quot;@android:drawable/ic_dialog_email&quot;
+    app:layout_anchor=&quot;@id/app_bar&quot;
+    app:layout_anchorGravity=&quot;bottom|end&quot; /&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;
+</code></pre><p>AppBarLayout是一种支持响应滚动手势的app bar布局（比如工具栏滚出或滚入屏幕），CollapsingToolbarLayout则是专门用来实现子布局内不同元素响应滚动细节的布局。</p>
+<p>与AppBarLayout组合的滚动布局（Recyclerview、NestedScrollView等）需要设置app:layout_behavior=”@string/appbar_scrolling_view_behavior”（上面代码中NestedScrollView控件所设置的）。没有设置的话，AppBarLayout将不会响应滚动布局的滚动事件。</p>
+<p>CollapsingToolbarLayout和ScrollView一起使用会有滑动bug，注意要使用NestedScrollView来替代ScrollView。</p>
+<p>AppBarLayout的子布局有5种滚动标识(就是上面代码CollapsingToolbarLayout中配置的app:layout_scrollFlags属性)：</p>
+<ol>
+<li>scroll:将此布局和滚动时间关联。这个标识要设置在其他标识之前，没有这个标识则布局不会滚动且其他标识设置无效。</li>
+<li>enterAlways:任何向下滚动操作都会使此布局可见。这个标识通常被称为“快速返回”模式。</li>
+<li>enterAlwaysCollapsed：假设你定义了一个最小高度（minHeight）同时enterAlways也定义了，那么view将在到达这个最小高度的时候开始显示，并且从这个时候开始慢慢展开，当滚动到顶部的时候展开完。</li>
+<li>exitUntilCollapsed：当你定义了一个minHeight，此布局将在滚动到达这个最小高度的时候折叠。</li>
+<li>snap:当一个滚动事件结束，如果视图是部分可见的，那么它将被滚动到收缩或展开。例如，如果视图只有底部25%显示，它将折叠。相反，如果它的底部75%可见，那么它将完全展开。</li>
+</ol>
+<p>CollapsingToolbarLayout可以通过app:contentScrim设置折叠时工具栏布局的颜色，通过app:statusBarScrim设置折叠时状态栏的颜色。默认contentScrim是colorPrimary的色值，statusBarScrim是colorPrimaryDark的色值。这个后面会用到。</p>
+<p>CollapsingToolbarLayout的子布局有3种折叠模式（Toolbar中设置的app:layout_collapseMode）</p>
+<ol>
+<li>off：这个是默认属性，布局将正常显示，没有折叠的行为。</li>
+<li>pin：CollapsingToolbarLayout折叠后，此布局将固定在顶部。</li>
+<li>parallax：CollapsingToolbarLayout折叠时，此布局也会有视差折叠效果。</li>
+</ol>
+<p>当CollapsingToolbarLayout的子布局设置了parallax模式时，我们还可以通过app:layout_collapseParallaxMultiplier设置视差滚动因子，值为：0~1。</p>
+<p>FloatingActionButton这个控件通过app:layout_anchor这个设置锚定在了AppBarLayout下方。FloatingActionButton源码中有一个Behavior方法，当AppBarLayout收缩时，FloatingActionButton就会跟着做出相应变化。关于CoordinatorLayout和Behavior，我下一篇文章会和大家一起学习。</p>
+<p>这一堆属性看着有点烦，大家可以新建一个ScrollingActivity模板去实验一下玩玩。</p>
+<h2 id="二、模仿bilibili客户端视频详情页"><a href="#二、模仿bilibili客户端视频详情页" class="headerlink" title="二、模仿bilibili客户端视频详情页"></a>二、模仿bilibili客户端视频详情页</h2><p>我们先对原界面分析一下。<br><img src="http://upload-images.jianshu.io/upload_images/828721-61defc66bb3e9fb8.gif?imageMogr2/auto-orient/strip" alt="哔哩哔哩Android客户端视频详情页.gif"></p>
+<p>界面初始，CollapsingToolbarLayout是展开状态，显示的是视频封面。我们向上滚动界面，CollapsingToolbarLayout收缩。当AppBarLayout完全折叠的时候视频av号隐藏，显示出来一个小电视图标和“立即播放”，点击则使AppBarLayout完全展开，CollapsingToolbarLayout子布局由ImageView切换为视频弹幕播放器。</p>
+<p>额…弹幕播放器…</p>
+<p>B站很早就开源了一个弹幕引擎，还起了个狂拽酷炫吊炸天的名字叫“烈焰弹幕使 ”（一看就是二次元程序猿们的作品→_→），源码在github上，项目名叫<a href="https://github.com/Bilibili/DanmakuFlameMaster" target="_blank" rel="external">DanmakuFlameMaster</a>。</p>
+<p>来我们先看修改完成的布局。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+android:id=&quot;@+id/coordinatorLayout&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;&gt;
+
+&lt;android.support.design.widget.AppBarLayout
+    android:id=&quot;@+id/app_bar&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;@dimen/app_bar_height&quot;
+    android:fitsSystemWindows=&quot;true&quot;
+    android:theme=&quot;@style/AppTheme.AppBarOverlay&quot;&gt;
+
+    &lt;android.support.design.widget.CollapsingToolbarLayout
+        android:id=&quot;@+id/toolbar_layout&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        app:contentScrim=&quot;?attr/colorPrimary&quot;
+        app:statusBarScrim=&quot;@android:color/transparent&quot;
+        app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed|snap&quot;&gt;
+
+        &lt;!--封面图片--&gt;
+        &lt;ImageView
+            android:id=&quot;@+id/imageview&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;match_parent&quot;
+            android:scaleType=&quot;centerCrop&quot;
+            android:src=&quot;@drawable/diqiu&quot;
+            app:layout_collapseMode=&quot;parallax&quot;
+            app:layout_collapseParallaxMultiplier=&quot;0.7&quot;
+            android:fitsSystemWindows=&quot;true&quot;/&gt;
+
+        &lt;!--视频及弹幕控件--&gt;
+        &lt;FrameLayout
+            android:id=&quot;@+id/video_danmu&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;match_parent&quot;
+            app:layout_collapseMode=&quot;parallax&quot;
+            app:layout_collapseParallaxMultiplier=&quot;0.7&quot;
+            android:fitsSystemWindows=&quot;true&quot;
+            android:visibility=&quot;gone&quot;&gt;
+            &lt;VideoView
+                android:id=&quot;@+id/videoview&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot; /&gt;
+
+            &lt;!--哔哩哔哩开源的弹幕控件--&gt;
+            &lt;master.flame.danmaku.ui.widget.DanmakuView
+                android:id=&quot;@+id/danmaku&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot; /&gt;
+        &lt;/FrameLayout&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id=&quot;@+id/toolbar&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;?attr/actionBarSize&quot;
+            app:layout_collapseMode=&quot;pin&quot;
+            app:popupTheme=&quot;@style/AppTheme.PopupOverlay&quot; &gt;
+
+            &lt;!--自定义带图片的立即播放按钮--&gt;
+            &lt;android.support.v7.widget.ButtonBarLayout
+                android:id=&quot;@+id/playButton&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:gravity=&quot;center&quot;
+                android:visibility=&quot;gone&quot;&gt;
+                &lt;ImageView
+                    android:layout_width=&quot;wrap_content&quot;
+                    android:layout_height=&quot;match_parent&quot;
+                    android:layout_gravity=&quot;center_horizontal&quot;
+                    android:src=&quot;@mipmap/ic_play_circle_filled_white_48dp&quot;/&gt;
+
+                &lt;TextView
+                    android:layout_width=&quot;wrap_content&quot;
+                    android:layout_height=&quot;wrap_content&quot;
+                    android:textColor=&quot;#ffffff&quot;
+                    android:text=&quot;立即播放&quot;
+                    android:layout_gravity=&quot;center_vertical&quot;
+                   /&gt;
+            &lt;/android.support.v7.widget.ButtonBarLayout&gt;
+
+        &lt;/android.support.v7.widget.Toolbar&gt;
+    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+&lt;/android.support.design.widget.AppBarLayout&gt;
+
+&lt;include layout=&quot;@layout/content_scrolling&quot; /&gt;
+
+&lt;android.support.design.widget.FloatingActionButton
+    android:id=&quot;@+id/fab&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_margin=&quot;@dimen/fab_margin&quot;
+    android:src=&quot;@mipmap/ic_play_circle_filled_white_48dp&quot;
+    app:layout_anchor=&quot;@id/app_bar&quot;
+    app:layout_anchorGravity=&quot;bottom|end&quot; /&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;
+</code></pre><p>我把colorPrimary的色值修改成了B站的“少女粉”，播放的图标是从网上找的。</p>
+<pre><code>&lt;color name=&quot;colorPrimary&quot;&gt;#FA7199&lt;/color&gt;
+</code></pre><p>因为我们要实现沉浸式状态栏，所以就需要先把整个activity设置成状态栏透明模式。然后在布局文件中，把CollapsingToolbarLayout里要实现沉浸式的控件设置上android:fitsSystemWindows=”true”，如果没有设置，则子布局会位于状态栏下方，未延伸至状态栏。</p>
+<p>布局并不算复杂，接下来先实现无弹幕播放时的功能,。</p>
+<p>我们需要监听CollapsingToolbarLayout的折叠、展开状态。唉我去，官方并没有提供现成的方法（⊙＿⊙？）。</p>
+<p>查看源码，可以看到CollapsingToolbarLayout是通过实现AppBarLayout的OnOffsetChangedListener接口，根据AppBarLayout的偏移来实现子布局和title的视差移动以及ContentScrim和StatusBarScrim的显示。那么我们也可以通过调用AppBarLayout的addOnOffsetChangedListener方法监听AppBarLayout的位移，判断CollapsingToolbarLayout的状态。</p>
+<p>先写一个枚举定义出CollapsingToolbarLayout展开、折叠、中间，这三种状态。</p>
+<pre><code> private CollapsingToolbarLayoutState state;
+
+ private enum CollapsingToolbarLayoutState {
+    EXPANDED,
+    COLLAPSED,
+    INTERNEDIATE
+}
+</code></pre><p>接下来对AppBarLayout进行监听，判断CollapsingToolbarLayout的状态并实现相应的逻辑。</p>
+<p>为了让大家对状态看着更直观，我在修改状态值的时候把title一起进行了修改。</p>
+<p>使用CollapsingToolbarLayout的时候要注意，在完成CollapsingToolbarLayout设置之后再调用Toolbar的setTitle()等方法将没有效果，我们需要改为调用CollapsingToolbarLayout的setTitle()等方法来对工具栏进行修改。（具体原因各位亲去看下CollapsingToolbarLayout源码就知道了　( ˙-˙ )　）</p>
+<pre><code>AppBarLayout  app_bar=(AppBarLayout)findViewById(R.id.app_bar);
+app_bar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+        if (verticalOffset == 0) {
+            if (state != CollapsingToolbarLayoutState.EXPANDED) {
+                state = CollapsingToolbarLayoutState.EXPANDED;//修改状态标记为展开
+                collapsingToolbarLayout.setTitle(&quot;EXPANDED&quot;);//设置title为EXPANDED
+            }
+        } else if (Math.abs(verticalOffset) &gt;= appBarLayout.getTotalScrollRange()) {
+            if (state != CollapsingToolbarLayoutState.COLLAPSED) {
+                collapsingToolbarLayout.setTitle(&quot;&quot;);//设置title不显示
+                playButton.setVisibility(View.VISIBLE);//隐藏播放按钮
+                state = CollapsingToolbarLayoutState.COLLAPSED;//修改状态标记为折叠
+            }
+        } else {
+            if (state != CollapsingToolbarLayoutState.INTERNEDIATE) {
+                if(state == CollapsingToolbarLayoutState.COLLAPSED){
+                    playButton.setVisibility(View.GONE);//由折叠变为中间状态时隐藏播放按钮
+                }
+                collapsingToolbarLayout.setTitle(&quot;INTERNEDIATE&quot;);//设置title为INTERNEDIATE
+                state = CollapsingToolbarLayoutState.INTERNEDIATE;//修改状态标记为中间
+            }
+        }
+    }
+});
+</code></pre><p>然后对播放按钮设置监听，点击则调用AppBarLayout的setExpanded(true)方法使工具栏展开。<br><img src="http://upload-images.jianshu.io/upload_images/828721-50b668639326f465.gif?imageMogr2/auto-orient/strip" alt="CollapsingToolbarLayout状态监听演示.gif"></p>
+<p>哔哩哔哩客户端的title是固定不动的，可以调用CollapsingToolbarLayout的setTitleEnabled(false)方法实现。</p>
+<p>细心的朋友可能发现了哔哩哔哩客户端为了避免视频封面图片颜色过浅影响状态栏信息的显示，加了一个渐变的不透明层。</p>
+<p>实现渐变遮罩层很简单。先在res/drawable文件夹下新建了一个名为gradient的xml文件，其中代码如下：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+
+    &lt;gradient
+        android:startColor=&quot;#33000000&quot;
+        android:endColor=&quot;#00000000&quot;
+        android:angle=&quot;270&quot; /&gt;
+
+&lt;/shape&gt;
+</code></pre><p>shape节点中，可以通过android:shape来设置形状，默认是矩形。gradient节点中angle的值270是从上到下，0是从左到右，90是从下到上。起始颜色#33000000是20%不透明度的黑色，#00000000表示全透明。</p>
+<p>然后在CollapsingToolbarLayout里的ImageView代码下面加上一个自定义view，背景设置为上面的渐变效果。</p>
+<pre><code>&lt;View
+   android:layout_width=&quot;match_parent&quot;
+   android:layout_height=&quot;40dp&quot;
+   android:background=&quot;@drawable/gradient&quot;
+   android:fitsSystemWindows=&quot;true&quot;
+/&gt;    
+</code></pre><p>一般状态栏的高度大概在20dp左右，我为了让渐变效果比较自然，并且不过多影响图（mei）片（zi）,把高度设置成了40dp。（状态栏能看清了，妹子脸也没黑，挺好　(๑• . •๑)　）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/828721-a613e0814823a935.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="有无渐变遮罩层的对比.jpg"></p>
+<p>我省略了弹幕播放的相关实现，接下来只要在播放按钮监听中写出封面图片的隐藏、视频和弹幕弹幕控件的显示初始化及播放逻辑，在AppBarLayout的三种状态监听中根据是否视频在播放写出其他相应逻辑就好了，感兴趣的朋友可以下载哔哩哔哩的“烈焰弹幕使”源码<a href="https://github.com/Bilibili/DanmakuFlameMaster" target="_blank" rel="external">DanmakuFlameMaster</a>玩玩。</p>
+<p>B站点击追番或投硬币后会出现一个类似Snackbar的提示控件，可以通过我上一篇文章<a href="http://www.jianshu.com/p/cd1e80e64311" target="_blank" rel="external">没时间解释了，快使用Snackbar!——Android Snackbar花式使用指南</a>来实现，欢迎感兴趣的朋友去看看。<br><img src="http://upload-images.jianshu.io/upload_images/828721-02aad67d7a942ea6.gif?imageMogr2/auto-orient/strip" alt="模仿哔哩哔哩视频详情页.gif"></p>
+<p>真的不是我懒得上代码了，真的…（基友：赶紧的，开黑了。 我：等等我，马上来！＼(≧▽≦)／）</p>
+<h2 id="三-CollapsingToolbarLayout与TabLayout"><a href="#三-CollapsingToolbarLayout与TabLayout" class="headerlink" title="三.CollapsingToolbarLayout与TabLayout"></a>三.CollapsingToolbarLayout与TabLayout</h2><p>CollapsingToolbarLayout与TabLayout组合使用的效果也不错。<br><img src="http://upload-images.jianshu.io/upload_images/828721-a68d0e424c1ab044.gif?imageMogr2/auto-orient/strip" alt="CollapsingToolbarLayout与TabLayout.gif"></p>
+<p>来看下CollapsingToolbarLayout里的代码</p>
+<pre><code>&lt;android.support.design.widget.CollapsingToolbarLayout
+    android:id=&quot;@+id/collapsingtoolbar&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    app:titleEnabled=&quot;false&quot;
+    app:contentScrim=&quot;@color/colorPrimary&quot;
+    app:statusBarScrim=&quot;@android:color/transparent&quot;
+    app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed|snap&quot;&gt;
+    &lt;ImageView
+        android:id=&quot;@+id/imageview&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:scaleType=&quot;centerCrop&quot;
+        android:adjustViewBounds=&quot;true&quot;
+        app:layout_collapseMode=&quot;parallax&quot;
+        app:layout_collapseParallaxMultiplier=&quot;0.7&quot;
+        android:fitsSystemWindows=&quot;true&quot;/&gt;
+     &lt;View
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;40dp&quot;
+        android:background=&quot;@drawable/gradient&quot;
+        android:fitsSystemWindows=&quot;true&quot; /&gt;
+    &lt;android.support.v7.widget.Toolbar
+        android:id=&quot;@+id/toolbar&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;96dp&quot;
+        app:titleMarginTop=&quot;15dp&quot;
+        android:gravity=&quot;top&quot;
+        app:layout_collapseMode=&quot;pin&quot;
+        app:title=&quot;hello&quot;
+        app:popupTheme=&quot;@style/AppTheme.PopupOverlay&quot;
+       /&gt;
+    &lt;android.support.design.widget.TabLayout
+        android:id=&quot;@+id/tablayout&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;45dp&quot;
+        android:layout_gravity=&quot;bottom&quot;/&gt;
+&lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+</code></pre><p>TabLayout没有设置app:layout_collapseMode，在CollapsingToolbarLayout收缩时就不会消失。</p>
+<p>CollapsingToolbarLayout收缩时的高度是Toolbar的高度，所以我们需要把Toolbar的高度增加，给TabLayout留出位置，这样收缩后TabLayout就不会和Toolbar重叠。</p>
+<p>Toolbar的高度增加，title会相应下移。android:gravity=”top”方法使Toolbar的title位于Toolbar的上方，然后通过app:titleMarginTop调整下title距顶部高度，这样Toolbar就和原来显示的一样了。</p>
+<hr>
+<p>CollapsingToolbarLayout还可以和Palette搭配使用，但是我感觉在实际使用中有些坑，因为CollapsingToolbarLayout中的图片不确定，Palette从图片中获取到的色彩很可能不是你想要的。</p>
+<p>感兴趣的朋友可以自己查下Palette的用法。</p>
+<p>就是这些。　［］～（￣▽￣）～＊</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/07/白底黑字！Android浅色状态栏黑色字体模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">白底黑字！Android浅色状态栏黑色字体模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 赵晨璞 zchenpu@163.com
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme 修改自 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,17 +1,118 @@
-title: 变色吧，状态栏
-date: 2016-05-06
+title: 白底黑字！Android浅色状态栏黑色字体模式
+date: 2016-05-07
 tags: Android
 ---
 
-网上有很多关于沉浸式状态栏的文章，实现方法都类似。我这篇文章就算是一篇总结吧，适配android4.4到6.0，以及小米的MIUI、魅族Flyme。<!--more-->
+公司项目UI改版的时候，把大部分标题栏都设计成了白色，给我们的设计图是这个样子的：
 
-因为没有什么复杂的知识点，所以我们先上代码再扯淡。
+![设计图.png](http://upload-images.jianshu.io/upload_images/828721-5c6558a077f83f3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-Android4.4版本上状态栏能透明了，但是5.0版本官方才提供了状态栏变色的API。大家适配4.4状态栏变色大多是采用开源库[SystemBarTint](https://github.com/jgilfelt/SystemBarTint)，本文也是如此，请大家自行去下载。
+这状态栏布局和图标挺像Android,但是这白底黑字Android设计规范里可没有啊，于是我们开发的时候果断忽视这个状态栏了。
 
+结果设计师拿着测试版过来问，你们安卓这个状态栏颜色怎么没改啊。
+
+我：这个做不了。
+
+设计师一脸质疑。
+
+我：Android4.4以上系统版本可以修改状态栏颜色，但是只有小米的MIUI、魅族的Flyme和Android6.0以上系统可以把状态栏文字和图标换成深色，其他的系统状态栏文字都是白色的，换成浅色背景的话就看不到了。
+
+设计师一脸懵逼不知所云。
+
+后来看着这黑色状态栏白色标题栏实在难看,而且自己用的是MIUI，于是还是做了适配。
+
+其实很多国内三方Android系统都有深色状态栏字体模式，但是目前只看到了小米和魅族公开了各自的实现方法，小米的支持MIUI V6以上版本，魅族的支持Flyme4.0以上版本。代码如下：
 
     /**
- 	* Created by 赵晨璞 on 2016/5/6.
+     * 设置状态栏图标为深色和魅族特定的文字风格，Flyme4.0以上
+     * 可以用来判断是否为Flyme用户
+     * @param window 需要设置的窗口
+     * @param dark 是否把状态栏字体及图标颜色设置为深色
+     * @return  boolean 成功执行返回true
+     *
+     */
+    public static boolean FlymeSetStatusBarLightMode(Window window, boolean dark) {
+        boolean result = false;
+        if (window != null) {
+            try {
+                WindowManager.LayoutParams lp = window.getAttributes();
+                Field darkFlag = WindowManager.LayoutParams.class
+                        .getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+                Field meizuFlags = WindowManager.LayoutParams.class
+                        .getDeclaredField("meizuFlags");
+                darkFlag.setAccessible(true);
+                meizuFlags.setAccessible(true);
+                int bit = darkFlag.getInt(null);
+                int value = meizuFlags.getInt(lp);
+                if (dark) {
+                    value |= bit;
+                } else {
+                    value &= ~bit;
+                }
+                meizuFlags.setInt(lp, value);
+                window.setAttributes(lp);
+                result = true;
+            } catch (Exception e) {
+
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 设置状态栏字体图标为深色，需要MIUIV6以上
+     * @param window 需要设置的窗口
+     * @param dark 是否把状态栏字体及图标颜色设置为深色
+     * @return  boolean 成功执行返回true
+     *
+     */
+    public static boolean MIUISetStatusBarLightMode(Window window, boolean dark) {
+        boolean result = false;
+        if (window != null) {
+            Class clazz = window.getClass();
+            try {
+                int darkModeFlag = 0;
+                Class layoutParams = Class.forName("android.view.MiuiWindowManager$LayoutParams");
+                Field  field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE");
+                darkModeFlag = field.getInt(layoutParams);
+                Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
+                if(dark){
+                    extraFlagField.invoke(window,darkModeFlag,darkModeFlag);//状态栏透明且黑色字体
+                }else{
+                    extraFlagField.invoke(window, 0, darkModeFlag);//清除黑色字体
+                }
+                result=true;
+            }catch (Exception e){
+
+            }
+        }
+        return result;
+    }
+
+![MIUI深色状态栏字体模式.png](http://upload-images.jianshu.io/upload_images/828721-5e1185afebeac409.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![Flyme深色状态栏字体模式.png](http://upload-images.jianshu.io/upload_images/828721-52b873cb24dd7a99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+官方在Android6.0中提供了亮色状态栏模式，配置只需一行代码：
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                activity.getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+       }
+
+![6.0原生深色状态栏字体模式.png](http://upload-images.jianshu.io/upload_images/828721-2c85f6fd8bc1202c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+网上有关状态栏颜色设置的文章很多，下面这段代码是我用的状态栏设置工具类，算是一个总结吧。
+
+官方在4.4版本只提供了状态栏透明的api,大家普遍采用开源库[SystemBarTint](https://github.com/jgilfelt/SystemBarTint)对4.4版本状态栏颜色进行设置，请各位自行下载。
+
+在设置状态栏全透明后，整个activity布局都会上移充满整个屏幕，如果你不想让布局上移的话就需要在根布局设置
+
+       android:fitsSystemWindows="true"
+
+以下为我的状态栏设置工具类：
+
+    /**
+ 	* Created by 赵晨璞 
  	*/
 	public class StatusBarUtil {
 
@@ -116,7 +217,7 @@ Android4.4版本上状态栏能透明了，但是5.0版本官方才提供了状�
      * 设置状态栏图标为深色和魅族特定的文字风格
      * 可以用来判断是否为Flyme用户
      * @param window 需要设置的窗口
-     * @param dark 是否把状态栏颜色设置为深色
+     * @param dark 是否把状态栏字体及图标颜色设置为深色
      * @return  boolean 成功执行返回true
      *
      */
@@ -149,9 +250,9 @@ Android4.4版本上状态栏能透明了，但是5.0版本官方才提供了状�
     }
 
     /**
-     * 需要MIUIV6以上
+     * 设置状态栏字体图标为深色，需要MIUIV6以上
      * @param window 需要设置的窗口
-     * @param dark 是否把状态栏颜色设置为深色
+     * @param dark 是否把状态栏字体及图标颜色设置为深色
      * @return  boolean 成功执行返回true
      *
      */
@@ -181,15 +282,11 @@ Android4.4版本上状态栏能透明了，但是5.0版本官方才提供了状�
 	}
 
 
-Android5.0以上版本，官方为了防止全透明状态栏在背景色过浅时影响状态栏信息显示，默认在状态栏加了一层半透明遮罩。所以我们设置状态栏为全透明时把4.4和5.0以上版本区别对待。
+适配浅色状态栏深色字体的时候发现底层版本为Android6.0.1的MIUI7.1系统不支持View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR设置，还是得用MIUI自己的深色字体方法。
 
-注意，在设置状态栏全透明后，如果你没在根布局设置
+三方Android系统对底层改的挺乱的，也是让人头痛。O__O 
 
-     android:fitsSystemWindows="true"
-整个activity的布局就都会上移充满屏幕，如果这时你修改了状态栏的颜色，那状态栏就会遮盖住一部分布局。
+***
+神马？写了这么多，你就说了句图里的妹子挺好看的。。。
 
-所以当你想设置状态栏为透明的时候就不要加上这段配置，如果你想设置状态栏为其他颜色的时候就得加上这段配置。
-
-公司项目UI改版的时候，把大部分标题栏都设计成了白色，给我们的设计图是这个样子的：
-
-这状态栏布局和图标挺像Android,但是这白底黑字Android设计规范里可没有啊，我们开发的时候果断忽视这个状态栏了。但是后来成品出来了，设计师跑过来问，你们状态栏为什么都没做啊。我解释说这个白底黑字的状态栏只有小米的MIUI和魅族的Flyme以及Android6.0版本可以实现（当时国内大部分都还是4.4系统），占比用户不到20%，做了也没什么意义啊。
+图片是随手从网上找的。。。
