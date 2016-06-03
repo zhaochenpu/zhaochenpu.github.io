@@ -362,3 +362,5 @@ CollapsingToolbarLayout还可以和Palette搭配使用，但是我感觉在实�
 感兴趣的朋友可以自己查下Palette的用法。
 
 就是这些。　［］～（￣▽￣）～＊
+
+我的简书主页[http://www.jianshu.com/users/990c16f1edc0/latest_articles](http://www.jianshu.com/users/990c16f1edc0/latest_articles)

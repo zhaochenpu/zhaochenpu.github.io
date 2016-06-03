@@ -1,17 +1,20 @@
-﻿title: 没时间解释了，快使用Snackbar!
+title: 没时间解释了，快使用Snackbar!
 date: 2016-05-04
 tags: Android
 ---
 Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。<!--more-->
 
-本文是在[《Design Support Library第三部分：Snackbar样式》](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html)和[《Snackbar使用及其注意事项》](http://blog.csdn.net/jywangkeep_/article/details/46405301)两篇文章的启发下而来，首先对两位作者表示感谢。
+本文是在[《Design Support Library第三部分：Snackbar样式》](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html)和[《Snackbar使用及其注意事项》](http://blog.csdn.net/jywangkeep_/article/details/46405301)两篇文章的启发下而来，首先对两篇文章的作者表示感谢。
+
+Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。
 
 ## 1.Snackbar基本介绍 ##
+
 使用Snackbar要导入com.android.support:design库。
 
-Snackbar是显示在所有屏幕其它元素之上(屏幕最顶层)，同一时间只能显示一个snackbar。
+Snackbar显示在所有屏幕其它元素之上(屏幕最顶层)，同一时间只能显示一个snackbar。
 
-Snackbar的基本使用很简单，与Toast类似。：
+Snackbar的基本使用很简单，与Toast类似。
 
     Snackbar.make(view, message_text, duration)
        .setAction(action_text, click_listener)
@@ -29,7 +32,9 @@ setAction()方法可设置Snackbar右侧按钮，增加进行交互事件。如�
      }).show();
 
 下面这张图演示了上面代码所实现的效果：Snackbar长显示、点击Action弹出toast提示以及Snackbar在CoordinatorLayout中滑动取消。
-![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/1.gif)
+
+![基础演示.gif](http://upload-images.jianshu.io/upload_images/828721-476620e85b863aa6.gif?imageMogr2/auto-orient/strip)
+
 
 如果你想在Snackbar的显示时或消失时做些什么，可以调用Snackbar的setCallback()方法。
 
@@ -37,7 +42,7 @@ setAction()方法可设置Snackbar右侧按钮，增加进行交互事件。如�
 
 Snackbar和Toast的默认样式都很单一，但是有时我们希望把不同类型信息区别显示，从而使用户更容易注意到提示信息。所以使Snackbar变色是一个好主意。
 
-Snackbar的官方API只提供了setActionTextColor()这个方法修改Action的文字颜色，这怎么办？查源码吧，哪里不会点哪里。
+Snackbar的官方API只提供了setActionTextColor()这个方法修改Action的文字颜色，这怎么办？查源码吧，哪里不会点哪里。(><)
 
 在源码中我们看到Snackbar中定义了一个继承自LinearLayout的内部类SnackbarLayout，Snackbar的样子就是由这个SnackbarLayout实现的。
 
@@ -87,13 +92,15 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
         }
     }
 
-很简单，代码没有几行。
+很简单，没有几行代码。
 
 本文最后提供的Snackbar封装类代码中定义了4种不同类型的信息：Info(妹子向你发来一条消息)、Confirm(妹子已收到你发出的消息)、Warning(妹子删除了你发出的消息)、Alert(妹子已将你拉黑)，分别用蓝色、绿色、橙色、红色来表示。
 
-![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/2.gif)
+![消息信息.png](http://upload-images.jianshu.io/upload_images/828721-19a81f6031b04caa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/3.gif)
+
+![警告和错误信息演示.gif](http://upload-images.jianshu.io/upload_images/828721-d0268574ad9f793c.gif?imageMogr2/auto-orient/strip)
+
 
 ## 3.在Snackbar中增加图标 ##
 > 
@@ -109,9 +116,9 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
 
 但是我就是想在Snackbar中加图标增加趣味性，引起用户注意怎么办？我就是想在Snackbar中放两个按钮进行可选非必要操作怎么办？我就是想整幺蛾子。︿(￣︶￣)︿
 
-设计规范中的说法是有道理的，因为官方认为“Snackbar是一种针对操作的轻量级反馈机制”，做的麻烦了影响视觉感受。但是对于上述任性的开发者（或者是接了奇葩需求的苦逼开发者）我们也有自己的解决方法。
+设计规范中的说法是有道理的，因为官方认为“Snackbar是一种针对操作的轻量级反馈机制”，做的麻烦了影响视觉感受。但是对于上述任性的开发者（或者是接了奇葩需求的苦逼开发者）我们也有解决方法。
 
-前面我们提到过Snackbar的view是由SnackbarLayout实现的，而SnackbarLayout是继承自LinearLayout，那么我们新建一个布局添加进去不就行了么。
+前面我们提到过Snackbar的view是由SnackbarLayout实现的，而SnackbarLayout是继承自LinearLayout，那么我们新建一个布局添加进去不就行了么。(～o￣￣)～o...
 
     public static void SnackbarAddView(Snackbar snackbar,int layoutId,int index) {
         View snackbarview = snackbar.getView();//获取snackbar的View(其实就是SnackbarLayout)
@@ -127,7 +134,7 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
         snackbarLayout.addView(add_view,index,p);//将新建布局添加进snackbarLayout相应位置
     }
 
-上面的代码中，如果我们不设置向Snackbar中添加的布局文件的布局参数，新布局会显示在Snackbar内的上方。使用上述任性方法的时候要注意新加布局的大小和Snackbar内文字长度，Snackbar过大或过于花哨了可不好看。
+上面的代码中，如果我们不设置向Snackbar中添加的布局文件的布局参数，新布局会显示在Snackbar内的顶部。使用上述任性方法的时候要注意新加布局的大小和Snackbar内文字长度，Snackbar过大或过于花哨了可不好看。
 
 下面是使用示例。我们先新建一个布局，暂时命名为snackbar_addview.xml,简单的放进了一个ImageView，图片就是android默认图标。
 
@@ -154,7 +161,8 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
 
       snackbar.show();
 
-![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/4.gif)
+![添加图标演示.gif](http://upload-images.jianshu.io/upload_images/828721-cc7664d0feb9f724.gif?imageMogr2/auto-orient/strip)
+
 
 ## 4.SnackbarUtil ##
 
@@ -326,7 +334,8 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
 
     SnackbarUtil.ShortSnackbar(coordinator,"妹子向你发来一条消息",SnackbarUtil.Info).show();
 
-![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/2.gif)
+![消息演示.gif](http://upload-images.jianshu.io/upload_images/828721-9640c1cf8ad5dbeb.gif?imageMogr2/auto-orient/strip)
+
 
 整出幺蛾子的使用示例：
 
@@ -342,5 +351,13 @@ SnackbarLayout中加载了R.layout.design_layout_snackbar_include布局文件，
      SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview2,2);
 
       snackbar.show();
-这个示例中调用了两次SnackbarAddView方法向Snackbar添加了两个不同的自定义布局，效果如下（不建议大家这么玩 _(:з」∠)＿ ）：
-![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/snackbar/5.gif)
+这个示例中调用了两次SnackbarAddView()方法向Snackbar中添加了两个不同的自定义布局，效果如下（不建议大家这么玩 _(:з」∠)＿ ）：
+
+![添加多布局.gif](http://upload-images.jianshu.io/upload_images/828721-19e2a53bbe1b1c10.gif?imageMogr2/auto-orient/strip)
+
+
+暂时就是这些。
+
+***
+
+我的简书主页[http://www.jianshu.com/users/990c16f1edc0/latest_articles](http://www.jianshu.com/users/990c16f1edc0/latest_articles)

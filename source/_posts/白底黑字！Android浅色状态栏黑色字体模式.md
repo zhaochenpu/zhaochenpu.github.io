@@ -2,6 +2,8 @@ title: 白底黑字！Android浅色状态栏黑色字体模式
 date: 2016-05-07
 tags: Android
 ---
+MIUI、Flyme、android6.0状态栏字体图标深色模式。
+<!--more-->
 
 公司项目UI改版的时候，把大部分标题栏都设计成了白色，给我们的设计图是这个样子的：
 
@@ -290,3 +292,5 @@ tags: Android
 神马？写了这么多，你就说了句图里的妹子挺好看的。。。
 
 图片是随手从网上找的。。。
+
+我的简书主页[http://www.jianshu.com/users/990c16f1edc0/latest_articles](http://www.jianshu.com/users/990c16f1edc0/latest_articles)
