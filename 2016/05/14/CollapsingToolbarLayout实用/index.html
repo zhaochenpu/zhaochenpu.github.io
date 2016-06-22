@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-a613e0814823a935.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-02aad67d7a942ea6.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-a68d0e424c1ab044.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2016-06-03T06:54:35.978Z">
+<meta property="og:updated_time" content="2016-06-22T09:36:29.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="看，这个工具栏能伸缩折叠!——Android CollapsingToolbarLayout使用介绍">
 <meta name="twitter:description" content="我非常喜欢Material Design里折叠工具栏的效果，bilibili Android客户端视频详情页就是采用的这种设计。这篇文章的第二部分我们就通过简单的模仿bilibili视频详情页的实现来了解下CollapsingToolbarLayout的使用。文章的第三部分介绍了CollapsingToolbarLayout与TabLayout的组合使用。">
@@ -451,6 +451,7 @@ app_bar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
 });
 </code></pre><p>然后对播放按钮设置监听，点击则调用AppBarLayout的setExpanded(true)方法使工具栏展开。<br><img src="http://upload-images.jianshu.io/upload_images/828721-50b668639326f465.gif?imageMogr2/auto-orient/strip" alt="CollapsingToolbarLayout状态监听演示.gif"></p>
 <p>哔哩哔哩客户端的title是固定不动的，可以调用CollapsingToolbarLayout的setTitleEnabled(false)方法实现。</p>
+<p>视频播放时，调用 NestedScrollView的setNestedScrollingEnabled(false)方法可以使AppBarLayout不响应滚动事件。</p>
 <p>细心的朋友可能发现了哔哩哔哩客户端为了避免视频封面图片颜色过浅影响状态栏信息的显示，加了一个渐变的不透明层。</p>
 <p>实现渐变遮罩层很简单。先在res/drawable文件夹下新建了一个名为gradient的xml文件，其中代码如下：</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
@@ -531,6 +532,15 @@ app_bar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/06/18/RecyclerView使用指南/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          这是一篇Android RecyclerView使用指南
+        
+      </div>
+    </a>
   
   
     <a href="/2016/05/07/白底黑字！Android浅色状态栏黑色字体模式/" id="article-nav-older" class="article-nav-link-wrap">

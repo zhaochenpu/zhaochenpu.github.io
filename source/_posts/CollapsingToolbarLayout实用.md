@@ -269,6 +269,8 @@ B站很早就开源了一个弹幕引擎，还起了个狂拽酷炫吊炸天的�
 
 哔哩哔哩客户端的title是固定不动的，可以调用CollapsingToolbarLayout的setTitleEnabled(false)方法实现。
 
+视频播放时，调用 NestedScrollView的setNestedScrollingEnabled(false)方法可以使AppBarLayout不响应滚动事件。
+
 细心的朋友可能发现了哔哩哔哩客户端为了避免视频封面图片颜色过浅影响状态栏信息的显示，加了一个渐变的不透明层。
 
 实现渐变遮罩层很简单。先在res/drawable文件夹下新建了一个名为gradient的xml文件，其中代码如下：

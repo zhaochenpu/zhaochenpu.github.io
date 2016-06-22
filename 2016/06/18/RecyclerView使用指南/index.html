@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>这是一篇Android RecyclerView使用指南 | no name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。
+本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="这是一篇Android RecyclerView使用指南">
+<meta property="og:url" content="http://yoursite.com/2016/06/18/RecyclerView使用指南/index.html">
+<meta property="og:site_name" content="no name">
+<meta property="og:description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。
+本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-d05ff584167469fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-6af52fcfd0223f13.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-ec32cbb9616fff01.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2016-06-22T09:37:35.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="这是一篇Android RecyclerView使用指南">
+<meta name="twitter:description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。
+本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+  
+    <link rel="alternative" href="/atom.xml" title="no name" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">赵晨璞</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/读书-公开课-笔记/" style="font-size: 15px;">读书&公开课 笔记</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.androiddevtools.cn/">AndroidDevTools</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jcodecraeer.com/plus/list.php?tid=31">泡在网上的日子</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://linetoanywhere.github.io/">豪哥的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Android程序猿，单身狗。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">赵晨璞</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/uploads/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">赵晨璞</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做自己最想做的事，其他的都是扯淡</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-RecyclerView使用指南" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/18/RecyclerView使用指南/" class="article-date">
+  	<time datetime="2016-06-17T16:00:00.000Z" itemprop="datePublished">2016-06-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      这是一篇Android RecyclerView使用指南
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。</p>
+<p>本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;<br><a id="more"></a></p>
+<p><a href="https://github.com/zhaochenpu/RecyclerViewDemo" target="_blank" rel="external">本文RecyclerViewDemo</a><br><img src="http://upload-images.jianshu.io/upload_images/828721-d05ff584167469fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RecyclerView三种自带布局"></p>
+<p>本文图片接口来自干货集中营<a href="http://gank.io/api" target="_blank" rel="external">http://gank.io/api</a></p>
+<p>##RecyclerView基础用法##</p>
+<p>RecyclerView是support.v7包中的控件，可以说是ListView和GridView的增强升级版。</p>
+<p>官方对RecyclerView的描述是（不翻译不是因为我英语差啊，真的）：</p>
+<blockquote>
+<p>A flexible view for providing a limited window into a large data set.</p>
+</blockquote>
+<p>RecyclerView的用法和ListView类似。我用网格布局为例，先上代码再细说。</p>
+<p>首先在布局中要创建这个控件：</p>
+<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+ &lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+android:id=&quot;@+id/grid_coordinatorLayout&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:fitsSystemWindows=&quot;true&quot;
+android:background=&quot;#ffffff&quot;
+tools:context=&quot;com.zcp.recyclerviewddmo.GridActivity&quot;&gt;
+&lt;!--工具栏--&gt;
+&lt;android.support.design.widget.AppBarLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:theme=&quot;@style/AppTheme.AppBarOverlay&quot;&gt;
+
+    &lt;android.support.v7.widget.Toolbar
+        android:id=&quot;@+id/toolbar&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;?attr/actionBarSize&quot;
+        android:background=&quot;?attr/colorPrimary&quot;
+        /&gt;
+
+&lt;/android.support.design.widget.AppBarLayout&gt;
+&lt;!--下拉刷新控件--&gt;
+&lt;android.support.v4.widget.SwipeRefreshLayout
+    android:id=&quot;@+id/grid_swipe_refresh&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;
+    &gt;
+
+    &lt;!--本文主角--&gt;
+    &lt;android.support.v7.widget.RecyclerView
+        android:id=&quot;@+id/grid_recycler&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        /&gt;
+&lt;/android.support.v4.widget.SwipeRefreshLayout&gt;
+&lt;/android.support.design.widget.CoordinatorLayout&gt;
+</code></pre><p>Activity的代码如下：</p>
+<pre><code>public class GridActivity extends AppCompatActivity {
+
+private static RecyclerView recyclerview;
+private CoordinatorLayout coordinatorLayout;
+private GridAdapter mAdapter;
+private List&lt;Meizi&gt; meizis;
+private GridLayoutManager mLayoutManager;
+private int lastVisibleItem ;
+private int page=1;
+private ItemTouchHelper itemTouchHelper;
+private SwipeRefreshLayout swipeRefreshLayout;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_grid);
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+
+    initView();//初始化布局
+    setListener();//设置监听事件
+
+    //执行加载数据
+    new GetData().execute(&quot;http://gank.io/api/data/福利/10/1&quot;);
+
+}
+
+private void initView(){
+    coordinatorLayout=(CoordinatorLayout)findViewById(R.id.grid_coordinatorLayout);
+
+    recyclerview=(RecyclerView)findViewById(R.id.grid_recycler);
+    mLayoutManager=new GridLayoutManager(GridActivity.this,3,GridLayoutManager.VERTICAL,false);//设置为一个3列的纵向网格布局
+    recyclerview.setLayoutManager(mLayoutManager);
+
+    swipeRefreshLayout=(SwipeRefreshLayout) findViewById(R.id.grid_swipe_refresh) ;
+    //调整SwipeRefreshLayout的位置
+    swipeRefreshLayout.setProgressViewOffset(false, 0,  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics()));
+}
+
+private void setListener(){
+    //swipeRefreshLayout刷新监听
+    swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            page=1;
+            new GetData().execute(&quot;http://gank.io/api/data/福利/10/1&quot;);
+        }
+    });
+    }
+
+
+private class GetData extends AsyncTask&lt;String, Integer, String&gt; {
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        //设置swipeRefreshLayout为刷新状态
+        swipeRefreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+
+        return MyOkhttp.get(params[0]);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        if(!TextUtils.isEmpty(result)){
+
+            JSONObject jsonObject;
+            Gson gson=new Gson();
+            String jsonData=null;
+
+            try {
+                jsonObject = new JSONObject(result);
+                jsonData = jsonObject.getString(&quot;results&quot;);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if(meizis==null||meizis.size()==0){
+                meizis= gson.fromJson(jsonData, new TypeToken&lt;List&lt;Meizi&gt;&gt;() {}.getType());
+
+                Meizi pages=new Meizi();
+                pages.setPage(page);
+                meizis.add(pages);//在数据链表中加入一个用于显示页数的item
+            }else{
+                List&lt;Meizi&gt;  more= gson.fromJson(jsonData, new TypeToken&lt;List&lt;Meizi&gt;&gt;() {}.getType());
+                meizis.addAll(more);
+
+                Meizi pages=new Meizi();
+                pages.setPage(page);
+                meizis.add(pages);//在数据链表中加入一个用于显示页数的item
+            }
+
+            if(mAdapter==null){
+                recyclerview.setAdapter(mAdapter = new GridAdapter(GridActivity.this,meizis));//recyclerview设置适配器
+
+                //实现适配器自定义的点击监听
+                mAdapter.setOnItemClickListener(new GridAdapter.OnRecyclerViewItemClickListener() {
+                    @Override
+                    public void onItemClick(View view) {
+                        int position=recyclerview.getChildAdapterPosition(view);
+                        SnackbarUtil.ShortSnackbar(coordinatorLayout,&quot;点击第&quot;+position+&quot;个&quot;,SnackbarUtil.Info).show();
+                       //彩色Snackbar工具类，请看我之前的文章《没时间解释了，快使用Snackbar!——Android Snackbar花式使用指南》http://www.jianshu.com/p/cd1e80e64311
+                    }
+                    @Override
+                    public void onItemLongClick(View view) {
+
+                    }
+                });       
+            }else{
+                //让适配器刷新数据
+                mAdapter.notifyDataSetChanged();
+            }
+        }
+        //停止swipeRefreshLayout加载动画
+        swipeRefreshLayout.setRefreshing(false);
+    }
+}
+}
+</code></pre><p>接下来我们看RecyclerView的适配器：</p>
+<pre><code>public  class GridAdapter extends RecyclerView.Adapter&lt;RecyclerView.ViewHolder&gt; implements View.OnClickListener, View.OnLongClickListener {
+
+private Context mContext;
+private List&lt;Meizi&gt; datas;//数据
+
+//自定义监听事件
+public static interface OnRecyclerViewItemClickListener {
+    void onItemClick(View view);
+    void onItemLongClick(View view);
+}
+private OnRecyclerViewItemClickListener mOnItemClickListener = null;
+public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+    mOnItemClickListener = listener;
+}
+
+//适配器初始化
+public GridAdapter(Context context,List&lt;Meizi&gt; datas) {
+    mContext=context;
+    this.datas=datas;
+}
+
+@Override
+public int getItemViewType(int position) {
+    //判断item类别，是图还是显示页数（图片有URL）
+    if (!TextUtils.isEmpty(datas.get(position).getUrl())) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+@Override
+public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+{
+    //根据item类别加载不同ViewHolder
+    if(viewType==0){
+        View view = LayoutInflater.from(mContext
+                ).inflate(R.layout.grid_meizi_item, parent,
+                false);//这个布局就是一个imageview用来显示图片
+        MyViewHolder holder = new MyViewHolder(view);
+
+       //给布局设置点击和长点击监听
+        view.setOnClickListener(this);
+        view.setOnLongClickListener(this);
+
+        return holder;
+    }else{
+        MyViewHolder2 holder2=new MyViewHolder2(LayoutInflater.from(
+                mContext).inflate(R.layout.page_item, parent,
+                false));//这个布局就是一个textview用来显示页数
+        return holder2;
+    }
+
+}
+
+@Override
+public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+ //将数据与item视图进行绑定，如果是MyViewHolder就加载网络图片，如果是MyViewHolder2就显示页数
+    if(holder instanceof MyViewHolder){
+        Picasso.with(mContext).load(datas.get(position).getUrl()).into(((MyViewHolder) holder).iv);//加载网络图片
+    }else if(holder instanceof MyViewHolder2){
+        ((MyViewHolder2) holder).tv.setText(datas.get(position).getPage()+&quot;页&quot;);
+    }
+
+}
+
+@Override
+public int getItemCount()
+{
+    return datas.size();//获取数据的个数
+}
+
+//点击事件回调
+@Override
+public void onClick(View v) {
+    if (mOnItemClickListener != null) {
+        mOnItemClickListener.onItemClick(v);
+    }
+}
+@Override
+public boolean onLongClick(View v) {
+    if (mOnItemClickListener!= null) {
+      mOnItemClickListener.onItemLongClick(v);
+   }
+    return false;
+}
+
+//自定义ViewHolder，用于加载图片
+class MyViewHolder extends RecyclerView.ViewHolder
+{
+    private ImageButton iv;
+
+    public MyViewHolder(View view)
+    {
+        super(view);
+        iv = (ImageButton) view.findViewById(R.id.iv);
+    }
+}
+//自定义ViewHolder，用于显示页数
+class MyViewHolder2 extends RecyclerView.ViewHolder
+{
+    private TextView tv;
+
+    public MyViewHolder2(View view)
+    {
+        super(view);
+        tv = (TextView) view.findViewById(R.id.tv);
+    }
+}
+
+    //添加一个item
+    public void addItem(Meizi meizi, int position) {
+        meizis.add(position, meizi);
+        notifyItemInserted(position);
+        recyclerview.scrollToPosition(position);//recyclerview滚动到新加item处
+    }
+
+    //删除一个item
+    public void removeItem(final int position) {
+        meizis.remove(position);
+        notifyItemRemoved(position);
+    }
+}
+</code></pre><p>数据类：</p>
+<pre><code> public class Meizi {
+
+private String url;//图片地址
+private int page;//页数
+
+public String getUrl() {
+    return url;
+}
+
+public void setUrl(String url) {
+    this.url = url;
+}
+
+public int getPage() {
+    return page;
+}
+
+public void setPage(int page) {
+    this.page = page;
+}  
+}
+</code></pre><p>RecyclerView的使用和ListView很像吧。</p>
+<p>RecyclerView需要通过setLayoutManager()方法设置布局管理器，RecyclerView有三个默认布局管理器LinearLayoutManager、GridLayoutManager、StaggeredGridLayoutManager，都支持横向和纵向排列以及反向滑动。如果想把RecyclerView改为横向滑动，也可以通过调用</p>
+<pre><code>mLayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
+</code></pre><p>RecyclerView不像ListView一样提供item的点击监听，所以我们只能自己实现。RecyclerView的item点击事件监听可以向我本文中为item的view设置监听，也可以在recyclerView.addOnItemTouchListener里去判断手势来实现。</p>
+<p>通过调用如下方法可以设置item加载或移除时的动画</p>
+<pre><code>recyclerView.setItemAnimator(new DefaultItemAnimator());
+</code></pre><p>更多的动画效果可以看别人写的<a href="https://github.com/gabrielemariotti/RecyclerViewItemAnimators" target="_blank" rel="external">RecyclerViewItemAnimators </a>这个项目。</p>
+<p>##自动加载更多##</p>
+<p>要想实现滑动到列表某处时自动加载下一页（比如剩最后两个item时），可以通过对RecyclerView设置滑动监听，获取当前显示的最后一个item在适配器中的位置，如果该item的位置小于或等于适配器item总个数减2，就加载下一页数据。<br>GridLayoutManager和LinearLayoutManager时方法如下：</p>
+<pre><code>//recyclerview滚动监听
+  recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+      @Override
+      public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+          super.onScrollStateChanged(recyclerView, newState);
+          //0：当前屏幕停止滚动；1时：屏幕在滚动 且 用户仍在触碰或手指还在屏幕上；2时：随用户的操作，屏幕上产生的惯性滑动；
+          // 滑动状态停止并且剩余少于两个item时，自动加载下一页
+          if (newState == RecyclerView.SCROLL_STATE_IDLE
+                  &amp;&amp; lastVisibleItem +2&gt;=mLayoutManager.getItemCount()) {
+              new GetData().execute(&quot;http://gank.io/api/data/福利/10/&quot;+(++page));
+          }
+      }
+
+      @Override
+      public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+          super.onScrolled(recyclerView, dx, dy);
+          //获取加载的最后一个可见视图在适配器的位置。
+          lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
+      }
+  });
+</code></pre><p>StaggeredGridLayoutManager因为item的位置是交错的，findLastVisibleItemPosition()方法返回的是一个数组，所以我们得先判断下这个数组的最大值，上面的onScrolled方法写成这样</p>
+<pre><code>int[] positions= mLayoutManager.findLastVisibleItemPositions(null);
+lastVisibleItem =Math.max(positions[0],positions[1]);//根据StaggeredGridLayoutManager设置的列数来定
+</code></pre><p> <img src="http://upload-images.jianshu.io/upload_images/828721-6af52fcfd0223f13.gif?imageMogr2/auto-orient/strip" alt="自动加载下一页.gif"><br><a href="https://github.com/jianghejie/XRecyclerView" target="_blank" rel="external">XRecyclerView</a>是别人写的一个库，实现了RecyclerView的下拉头和底部加载布局，需要的可以看下。</p>
+<p>##Item拖拽和滑动删除##<br>ItemTouchHelper是一个处理RecyclerView的滑动删除和拖拽的辅助类，RecyclerView 的item拖拽移动和滑动删除就靠它来实现。</p>
+<p>ItemTouchHelper的监听如下</p>
+<pre><code>itemTouchHelper=new ItemTouchHelper(new ItemTouchHelper.Callback() {
+
+    //用于设置拖拽和滑动的方向
+    @Override
+    public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        int dragFlags=0,swipeFlags=0;
+        if(recyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager||recyclerView.getLayoutManager() instanceof GridLayoutManager){
+           //网格式布局有4个方向
+           dragFlags=ItemTouchHelper.UP|ItemTouchHelper.DOWN|ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT;
+        }else if(recyclerView.getLayoutManager() instanceof LinearLayoutManager){
+           //线性式布局有2个方向
+           dragFlags=ItemTouchHelper.UP|ItemTouchHelper.DOWN;
+
+           swipeFlags = ItemTouchHelper.START|ItemTouchHelper.END; //设置侧滑方向为从两个方向都可以
+        }
+        return makeMovementFlags(dragFlags,swipeFlags);//swipeFlags 为0的话item不滑动
+    }
+
+    //长摁item拖拽时会回调这个方法
+    @Override
+    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        int from=viewHolder.getAdapterPosition();
+        int to=target.getAdapterPosition();
+        Collections.swap(meizis,from,to);//交换数据链表中数据的位置
+        mAdapter.notifyItemMoved(from,to);//更新适配器中item的位置
+        return true;
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+    //这里处理滑动删除
+    }
+
+    @Override
+    public boolean isLongPressDragEnabled() {
+        return false;//返回true则为所有item都设置可以拖拽
+    }
+});
+</code></pre><p>itemTouchHelper需要与recyclerView绑定才有效果，在recyclerView初始化的时候调用</p>
+<pre><code>itemTouchHelper.attachToRecyclerView(recyclerview);
+</code></pre><p>因为我想要网格布局中的图片item可拖拽，而页数item不可拖拽，所以我isLongPressDragEnabled()方法返回的false，而在item的长点击事件监听中做具体处理。</p>
+<pre><code>mAdapter.setOnItemClickListener(new GridAdapter.OnRecyclerViewItemClickListener() {
+@Override
+public void onItemClick(View view) {
+}
+
+ @Override
+ public void onItemLongClick(View view) {
+       itemTouchHelper.startDrag(recyclerview.getChildViewHolder(view));//设置拖拽item
+    }
+});
+</code></pre><p>如果你想为item设置拖拽和滑动时的响应动画效果，可以利用ItemTouchHelper的下面三个方法。用线性布局示例：</p>
+<pre><code>//当item拖拽开始时调用
+@Override
+public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
+super.onSelectedChanged(viewHolder, actionState);
+ if(actionState==ItemTouchHelper.ACTION_STATE_DRAG){
+       viewHolder.itemView.setBackgroundColor(Color.LTGRAY);//拖拽时设置背景色为灰色
+    }
+}
+
+//当item拖拽完成时调用
+@Override
+public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+super.clearView(recyclerView, viewHolder);
+ viewHolder.itemView.setBackgroundColor(Color.WHITE);//拖拽停止时设置背景色为白色
+}
+
+ //当item视图变化时调用
+ @Override
+ public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+ super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+  //根据item滑动偏移的值修改item透明度。screenwidth是我提前获得的屏幕宽度
+  viewHolder.itemView.setAlpha(1-Math.abs(dX)/screenwidth);
+ }
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/828721-ec32cbb9616fff01.gif?imageMogr2/auto-orient/strip" alt="拖拽和滑动删除.gif"></p>
+<hr>
+<p>就是这些。　［］～（￣▽￣）～＊</p>
+<p><a href="https://github.com/zhaochenpu/RecyclerViewDemo" target="_blank" rel="external">RecyclerViewDemo</a> </p>
+<p>本文送给说“三百六十行，行行出码农”，然后来跟我抢饭碗的两位兄弟。</p>
+<p>我知道你们都喜欢看妹子 →_→…</p>
+<p>我的简书主页<a href="http://www.jianshu.com/users/990c16f1edc0/latest_articles" target="_blank" rel="external">http://www.jianshu.com/users/990c16f1edc0/latest_articles</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/14/CollapsingToolbarLayout实用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">看，这个工具栏能伸缩折叠!——Android CollapsingToolbarLayout使用介绍</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 赵晨璞 zchenpu@163.com
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme 修改自 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
