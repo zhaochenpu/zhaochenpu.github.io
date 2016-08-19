@@ -1952,3 +1952,7 @@ Snackbar是Android Support Design Library库支持的一个控件，个人觉得
 		return f;
 	}
     }
+***
+谁说程序员不能文艺？欢迎关注微信订阅号《核桃42》。推送的内容关于科技、设计、心理、人文，用好文补脑。
+
+![核桃42](http://upload-images.jianshu.io/upload_images/828721-2b9cde7b3a350c73.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
