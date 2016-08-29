@@ -6,7 +6,7 @@ tags: 杂谈
 ![](https://raw.githubusercontent.com/zhaochenpu/zhaochenpu.github.io/master/other/time2016.jpg)
 
 
-一个人在外，冷暖自知，于是我用业余时间为自己写了一个天气APP——[《温度·天气》](https://github.com/zhaochenpu/WenDuTianQi)。
+一个人在外，冷暖自知，于是我用业余时间为自己写了一个天气APP——[《温度·天气》](https://github.com/zhaochenpu/WenDuTianQi)。<!--more-->
 
 因为只是个人兴趣之作，所以没有做太多适配，不足之处还望见谅。
 
