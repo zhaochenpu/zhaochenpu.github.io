@@ -107,11 +107,6 @@ hexo有很多主题[可以从这里挑个](http://www.zhihu.com/question/2442233
 当然你也可以直接在本地的库文件夹中执行hexo的安装和其他配置，然后将public文件夹内所有文件粘贴到库文件夹根目录下，在github客户端中的Repository settings中添加忽略的文件，只上传需要的文件。
 
 
-***
-
-谁说程序员不能文艺？欢迎关注微信订阅号《核桃42》。推送的内容关于科技、设计、心理、人文，用好文补脑。
-![核桃42](http://upload-images.jianshu.io/upload_images/828721-2b9cde7b3a350c73.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
 
 
 
