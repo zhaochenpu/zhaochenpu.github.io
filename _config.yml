@@ -10,7 +10,8 @@ author: 赵晨璞
 email: zchenpu@163.com
 language: zh-Hans
 timezone:
-avatar: /uploads/avatar.jpg
+
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
