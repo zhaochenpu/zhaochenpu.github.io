@@ -2,10 +2,10 @@ title: Android Toast花式使用
 date: 2016-08-11
 tags: Android
 ---
-![](http://upload-images.jianshu.io/upload_images/828721-e0fc168c7e6ce054.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 之前写过一篇[没时间解释了，快使用Snackbar!——Android Snackbar花式使用指南](http://www.jianshu.com/p/cd1e80e64311)。Toast的自定义使用原理与其类似。<!--more-->
 
+![](http://upload-images.jianshu.io/upload_images/828721-e0fc168c7e6ce054.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ## 1.Toast源码分析 ##
 老规矩，我们先去看Toast的源码。
