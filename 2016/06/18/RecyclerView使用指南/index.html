@@ -6,29 +6,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>这是一篇Android RecyclerView使用指南 | no name</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。
-本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+  <meta name="description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。 本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="这是一篇Android RecyclerView使用指南">
 <meta property="og:url" content="http://yoursite.com/2016/06/18/RecyclerView使用指南/index.html">
 <meta property="og:site_name" content="no name">
-<meta property="og:description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。
-本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+<meta property="og:description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。 本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-d05ff584167469fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-6af52fcfd0223f13.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-ec32cbb9616fff01.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2016-08-29T09:17:01.077Z">
+<meta property="og:updated_time" content="2017-12-14T09:44:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这是一篇Android RecyclerView使用指南">
-<meta name="twitter:description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。
-本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+<meta name="twitter:description" content="RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。 本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/828721-d05ff584167469fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="no name" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -115,7 +115,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a>
 					</div>
 				</section>
 				
@@ -224,8 +224,8 @@
       
         <p>RecyclerView从2014年发布到现在已经很长时间了，使用已经相当普遍。</p>
 <p>本文主要介绍了RecyclerView的基础使用、自动加载更多数据、item的拖拽和划动删除。详细效果和使用请看我的demo;<br><a id="more"></a></p>
-<p><a href="https://github.com/zhaochenpu/RecyclerViewDemo" target="_blank" rel="external">本文RecyclerViewDemo</a><br><img src="http://upload-images.jianshu.io/upload_images/828721-d05ff584167469fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RecyclerView三种自带布局"></p>
-<p>本文图片接口来自干货集中营<a href="http://gank.io/api" target="_blank" rel="external">http://gank.io/api</a></p>
+<p><a href="https://github.com/zhaochenpu/RecyclerViewDemo" target="_blank" rel="noopener">本文RecyclerViewDemo</a><br><img src="http://upload-images.jianshu.io/upload_images/828721-d05ff584167469fa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RecyclerView三种自带布局"></p>
+<p>本文图片接口来自干货集中营<a href="http://gank.io/api" target="_blank" rel="noopener">http://gank.io/api</a></p>
 <p>##RecyclerView基础用法##</p>
 <p>RecyclerView是support.v7包中的控件，可以说是ListView和GridView的增强升级版。</p>
 <p>官方对RecyclerView的描述是（不翻译不是因为我英语差啊，真的）：</p>
@@ -548,7 +548,7 @@ public void setPage(int page) {
 </code></pre><p>RecyclerView不像ListView一样提供item的点击监听，所以我们只能自己实现。RecyclerView的item点击事件监听可以向我本文中为item的view设置监听，也可以在recyclerView.addOnItemTouchListener里去判断手势来实现。</p>
 <p>通过调用如下方法可以设置item加载或移除时的动画</p>
 <pre><code>recyclerView.setItemAnimator(new DefaultItemAnimator());
-</code></pre><p>更多的动画效果可以看别人写的<a href="https://github.com/gabrielemariotti/RecyclerViewItemAnimators" target="_blank" rel="external">RecyclerViewItemAnimators </a>这个项目。</p>
+</code></pre><p>更多的动画效果可以看别人写的<a href="https://github.com/gabrielemariotti/RecyclerViewItemAnimators" target="_blank" rel="noopener">RecyclerViewItemAnimators </a>这个项目。</p>
 <p>##自动加载更多##</p>
 <p>要想实现滑动到列表某处时自动加载下一页（比如剩最后两个item时），可以通过对RecyclerView设置滑动监听，获取当前显示的最后一个item在适配器中的位置，如果该item的位置小于或等于适配器item总个数减2，就加载下一页数据。<br>GridLayoutManager和LinearLayoutManager时方法如下：</p>
 <pre><code>//recyclerview滚动监听
@@ -574,7 +574,7 @@ public void setPage(int page) {
 </code></pre><p>StaggeredGridLayoutManager因为item的位置是交错的，findLastVisibleItemPosition()方法返回的是一个数组，所以我们得先判断下这个数组的最大值，上面的onScrolled方法写成这样</p>
 <pre><code>int[] positions= mLayoutManager.findLastVisibleItemPositions(null);
 lastVisibleItem =Math.max(positions[0],positions[1]);//根据StaggeredGridLayoutManager设置的列数来定
-</code></pre><p> <img src="http://upload-images.jianshu.io/upload_images/828721-6af52fcfd0223f13.gif?imageMogr2/auto-orient/strip" alt="自动加载下一页.gif"><br><a href="https://github.com/jianghejie/XRecyclerView" target="_blank" rel="external">XRecyclerView</a>是别人写的一个库，实现了RecyclerView的下拉头和底部加载布局，需要的可以看下。</p>
+</code></pre><p> <img src="http://upload-images.jianshu.io/upload_images/828721-6af52fcfd0223f13.gif?imageMogr2/auto-orient/strip" alt="自动加载下一页.gif"><br><a href="https://github.com/jianghejie/XRecyclerView" target="_blank" rel="noopener">XRecyclerView</a>是别人写的一个库，实现了RecyclerView的下拉头和底部加载布局，需要的可以看下。</p>
 <p>##Item拖拽和滑动删除##<br>ItemTouchHelper是一个处理RecyclerView的滑动删除和拖拽的辅助类，RecyclerView 的item拖拽移动和滑动删除就靠它来实现。</p>
 <p>ItemTouchHelper的监听如下</p>
 <pre><code>itemTouchHelper=new ItemTouchHelper(new ItemTouchHelper.Callback() {
@@ -655,10 +655,10 @@ super.clearView(recyclerView, viewHolder);
 </code></pre><p><img src="http://upload-images.jianshu.io/upload_images/828721-ec32cbb9616fff01.gif?imageMogr2/auto-orient/strip" alt="拖拽和滑动删除.gif"></p>
 <hr>
 <p>就是这些。　［］～（￣▽￣）～＊</p>
-<p><a href="https://github.com/zhaochenpu/RecyclerViewDemo" target="_blank" rel="external">RecyclerViewDemo</a> </p>
+<p><a href="https://github.com/zhaochenpu/RecyclerViewDemo" target="_blank" rel="noopener">RecyclerViewDemo</a> </p>
 <p>本文送给说“三百六十行，行行出码农”，然后来跟我抢饭碗的两位兄弟。</p>
 <p>我知道你们都喜欢看妹子 →_→…</p>
-<p>我的简书主页<a href="http://www.jianshu.com/users/990c16f1edc0/latest_articles" target="_blank" rel="external">http://www.jianshu.com/users/990c16f1edc0/latest_articles</a></p>
+<p>我的简书主页<a href="http://www.jianshu.com/users/990c16f1edc0/latest_articles" target="_blank" rel="noopener">http://www.jianshu.com/users/990c16f1edc0/latest_articles</a></p>
 
       
     </div>
@@ -678,8 +678,8 @@ super.clearView(recyclerView, viewHolder);
     </a>
   
   
-    <a href="/2016/05/15/WenDu/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于《温度·天气》</div>
+    <a href="/2016/05/14/CollapsingToolbarLayout实用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">看，这个工具栏能伸缩折叠!——Android CollapsingToolbarLayout使用介绍</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -700,7 +700,7 @@ super.clearView(recyclerView, viewHolder);
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 赵晨璞 zchenpu@163.com
+    		&copy; 2017 赵晨璞 zchenpu@163.com
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme 修改自 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
@@ -710,7 +710,7 @@ super.clearView(recyclerView, viewHolder);
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -726,8 +726,8 @@ super.clearView(recyclerView, viewHolder);
 		open_in_new: false
 	}
 </script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 

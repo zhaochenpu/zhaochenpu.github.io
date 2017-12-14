@@ -7,28 +7,31 @@
   <title>没时间解释了，快使用Snackbar! | no name</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="没时间解释了，快使用Snackbar!">
 <meta property="og:url" content="http://yoursite.com/2016/05/04/没时间解释了，快使用Snackbar！/index.html">
 <meta property="og:site_name" content="no name">
 <meta property="og:description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-476620e85b863aa6.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-19a81f6031b04caa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-d0268574ad9f793c.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-cc7664d0feb9f724.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-9640c1cf8ad5dbeb.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/828721-19e2a53bbe1b1c10.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2016-08-29T09:17:59.794Z">
+<meta property="og:updated_time" content="2017-12-14T09:44:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="没时间解释了，快使用Snackbar!">
 <meta name="twitter:description" content="Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/828721-476620e85b863aa6.gif?imageMogr2/auto-orient/strip">
   
     <link rel="alternative" href="/atom.xml" title="no name" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -115,7 +118,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/博客相关/" style="font-size: 10px;">博客相关</a>
 					</div>
 				</section>
 				
@@ -223,7 +226,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。<a id="more"></a></p>
-<p>本文是在<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html" target="_blank" rel="external">《Design Support Library第三部分：Snackbar样式》</a>和<a href="http://blog.csdn.net/jywangkeep_/article/details/46405301" target="_blank" rel="external">《Snackbar使用及其注意事项》</a>两篇文章的启发下而来，首先对两篇文章的作者表示感谢。</p>
+<p>本文是在<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0714/3186.html" target="_blank" rel="noopener">《Design Support Library第三部分：Snackbar样式》</a>和<a href="http://blog.csdn.net/jywangkeep_/article/details/46405301" target="_blank" rel="noopener">《Snackbar使用及其注意事项》</a>两篇文章的启发下而来，首先对两篇文章的作者表示感谢。</p>
 <p>Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。</p>
 <h2 id="1-Snackbar基本介绍"><a href="#1-Snackbar基本介绍" class="headerlink" title="1.Snackbar基本介绍"></a>1.Snackbar基本介绍</h2><p>使用Snackbar要导入com.android.support:design库。</p>
 <p>Snackbar显示在所有屏幕其它元素之上(屏幕最顶层)，同一时间只能显示一个snackbar。</p>
@@ -296,7 +299,7 @@
 <p><strong>最多0-1个操作，不包含取消按钮</strong></p>
 <p>当一个动作发生的时候，应当符合提示框和可用性规则。当有2个或者2个以上的操作出现时，应该使用提示框而不是 Snackbar，即使其中的一个是取消操作。如果 Snackbar 中提示的操作重要到需要打断屏幕上正在进行的操作，那么理当使用提示框而非 Snackbar。</p>
 </blockquote>
-<p>上面这段是谷歌 <a href="http://wiki.jikexueyuan.com/project/material-design/components/snackbars-and-toasts.html" title="Material Design中文版" target="_blank" rel="external">Material Design设计规范</a>中的话。</p>
+<p>上面这段是谷歌 <a href="http://wiki.jikexueyuan.com/project/material-design/components/snackbars-and-toasts.html" title="Material Design中文版" target="_blank" rel="noopener">Material Design设计规范</a>中的话。</p>
 <p>但是我就是想在Snackbar中加图标增加趣味性，引起用户注意怎么办？我就是想在Snackbar中放两个按钮进行可选非必要操作怎么办？我就是想整幺蛾子。︿(￣︶￣)︿</p>
 <p>设计规范中的说法是有道理的，因为官方认为“Snackbar是一种针对操作的轻量级反馈机制”，做的麻烦了影响视觉感受。但是对于上述任性的开发者（或者是接了奇葩需求的苦逼开发者）我们也有解决方法。</p>
 <p>前面我们提到过Snackbar的view是由SnackbarLayout实现的，而SnackbarLayout是继承自LinearLayout，那么我们新建一个布局添加进去不就行了么。(～o￣￣)～o…</p>
@@ -517,7 +520,7 @@ SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview2,2);
 <p><img src="http://upload-images.jianshu.io/upload_images/828721-19e2a53bbe1b1c10.gif?imageMogr2/auto-orient/strip" alt="添加多布局.gif"></p>
 <p>暂时就是这些。</p>
 <hr>
-<p>我的简书主页<a href="http://www.jianshu.com/users/990c16f1edc0/latest_articles" target="_blank" rel="external">http://www.jianshu.com/users/990c16f1edc0/latest_articles</a></p>
+<p>我的简书主页<a href="http://www.jianshu.com/users/990c16f1edc0/latest_articles" target="_blank" rel="noopener">http://www.jianshu.com/users/990c16f1edc0/latest_articles</a></p>
 
       
     </div>
@@ -559,7 +562,7 @@ SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview2,2);
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 赵晨璞 zchenpu@163.com
+    		&copy; 2017 赵晨璞 zchenpu@163.com
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme 修改自 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
@@ -569,7 +572,7 @@ SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview2,2);
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -585,8 +588,8 @@ SnackbarUtil.SnackbarAddView(snackbar,R.layout.snackbar_addview2,2);
 		open_in_new: false
 	}
 </script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 
