@@ -5,7 +5,7 @@
 # Site
 title: no name
 subtitle: 做自己最想做的事，其他的都是扯淡
-description: 
+description:
 author: 赵晨璞
 email: zchenpu@163.com
 language: zh-Hans
@@ -67,7 +67,7 @@ pagination_dir: page
 #- hexo-generator-sitemap
 
 ## Themes: http://hexo.io/themes/
-theme: yilia
+theme: next
 
 #sitemap
 #sitemap:
